@@ -354,8 +354,8 @@ export default {
 $font-color: #ffffff;
 $font-dark-color: #ffffff;
 $font-darker-color: #5b646d;
-$highlight-color: rgb(60, 179, 113);
-$main-color: rgb(60, 179, 113);
+$highlight-color: white;
+$main-color: white;
 
 $light-color: lighten($main-color, 3%);
 $dark-color: darken($main-color, 3%);
@@ -368,14 +368,6 @@ $gradient-color-end: $dark-color;
 $sidebar-width: 13rem;
 $header-height: 3.25rem;
 $padding: 2rem;
-
-html {
-  overflow-y: auto;
-}
-
-body {
-  color: $font-color;
-}
 
 .sidebar {
   padding-left: calc(#{$padding} - 0.75rem);
