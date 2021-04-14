@@ -1,12 +1,11 @@
 <template>
-
 <div>
- <b-navbar :centered="true" :fixed-top="true">
+ <b-navbar :centered="true" :fixed-top="false">
        <!-- <template #brand>
           <BrandIcon  class="navbar-item" :brand_logo="brand_logo" />
         </template>-->
         <template #start>
-           <div class="navbar-menu">
+           <div role="navigation" aria-label="main navigation">
             <div class="navbar-start">
             <b-tooltip label="Cadastrar"
                 type="is-dark"
@@ -49,83 +48,6 @@
             square>
            <b-icon icon="user" style="color: grey;" size="is-large" ></b-icon>
         </b-tooltip>
-
-            <b-tooltip label="Cadastrar"
-                type="is-dark"
-                  position="is-bottom"
-                    class="navbar-item"
-                  square>
-                <b-icon icon="plus" style="color: grey;" size="is-large" ></b-icon>
-              </b-tooltip>
-
-
-                     <b-tooltip label="Listar Produtos"
-                       type="is-dark"
-            position="is-bottom"
-              class="navbar-item"
-            square>
-           <b-icon icon="eye" style="color: grey;" size="is-large" ></b-icon>
-        </b-tooltip>
-
-             <b-tooltip label="Carrinho"
-                      type="is-dark"
-            position="is-bottom"
-              class="navbar-item"
-            square>
-           <b-icon icon="shopping-cart" style="color: grey;" size="is-large" ></b-icon>
-        </b-tooltip>
-
-
-                     <b-tooltip label="Estatística"
-                     type="is-dark"
-            position="is-bottom"
-              class="navbar-item"
-            square>
-           <b-icon icon="chart-pie" style="color: grey;" size="is-large" ></b-icon>
-        </b-tooltip>
-
-                     <b-tooltip label="Perfil"
-                      type="is-dark"
-            position="is-bottom"
-              class="navbar-item"
-            square>
-           <b-icon icon="user" style="color: grey;" size="is-large" ></b-icon>
-        </b-tooltip>
-
-                    <b-tooltip label="Cadastrar"
-                type="is-dark"
-                  position="is-bottom"
-                    class="navbar-item"
-                  square>
-                <b-icon icon="plus" style="color: grey;" size="is-large" ></b-icon>
-              </b-tooltip>
-
-
-                     <b-tooltip label="Listar Produtos"
-                       type="is-dark"
-            position="is-bottom"
-              class="navbar-item"
-            square>
-           <b-icon icon="eye" style="color: grey;" size="is-large" ></b-icon>
-        </b-tooltip>
-
-             <b-tooltip label="Carrinho"
-                      type="is-dark"
-            position="is-bottom"
-              class="navbar-item"
-            square>
-           <b-icon icon="shopping-cart" style="color: grey;" size="is-large" ></b-icon>
-        </b-tooltip>
-
-
-                     <b-tooltip label="Estatística"
-                     type="is-dark"
-            position="is-bottom"
-              class="navbar-item"
-            square>
-           <b-icon icon="chart-pie" style="color: grey;" size="is-large" ></b-icon>
-        </b-tooltip>
-
                      <b-tooltip label="Perfil"
                       type="is-dark"
             position="is-bottom"
@@ -205,6 +127,7 @@ export default {
     height: 10vh !important;
     padding-left: 8vh !important;
     padding-right: 8vh !important;
+    padding-top: 2vh !important;
   };
   }
 </style>
