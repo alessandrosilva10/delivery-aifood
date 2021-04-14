@@ -55,20 +55,12 @@
             square>
            <b-icon icon="user" style="color: grey;" size="is-large" ></b-icon>
         </b-tooltip>
-
             </div>
         </div>
         </template>
         <template #end>
           <div class="navbar-menu">
             <div class="navbar-end">
-              <!--  <a
-                @click="openCheckout"
-                class="navbar-item"
-                role="button">
-                <b-icon icon="shopping-cart" style="color: red;" size="is-medium" ></b-icon>
-            </a>
-            <NavIcon :checkout="false" icon="user"/>-->
             </div>
         </div>
         </template>
