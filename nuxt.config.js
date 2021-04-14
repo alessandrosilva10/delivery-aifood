@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'DELIVERY',
+    title: 'Aifood',
     htmlAttrs: {
       lang: 'en'
     },
@@ -14,7 +14,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
-      //{ src: 'https://js.stripe.com/v3/' }
+      { src: 'https://js.stripe.com/v3/' }
 
     ]
   },
@@ -26,7 +26,9 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {src: '~/plugins/vue-stripe.js', ssr: false },
-    { src: '~/plugins/paycard.js', mode: 'client' },
+    { src: '@/plugins/vue-material-icons', mode: 'client' },
+    { src: '@/plugins/apex-chart', mode: 'client' }
+   //{ src: '~/plugins/paycard.js', mode: 'client' },
 
   ],
 
@@ -36,8 +38,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
 
-  ],
-
+   ],
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     ['nuxtjs-stripe', {
@@ -48,12 +49,19 @@ export default {
       async: true // Default
     }],
     // https://go.nuxtjs.dev/buefy
-    'nuxt-buefy',
+    ['nuxt-buefy', {
+      defaultIconPack: 'fas',
+      materialDesignIconsHRef: "https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+    }],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
 "nuxt-stripejs"
     //{ src: '~/plugins/vue-stripe.js', ssr: false },
-  ],
+  ],/*
+  buefy: {
+    materialDesignIcons: false,
+    defaultIconPack: 'fa'
+  },*/
   stripe: {
     publishableKey: 'pk_test_XXXXXXXXXXXXXXX',
   },

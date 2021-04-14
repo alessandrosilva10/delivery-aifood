@@ -13,14 +13,13 @@
         <template #end>
           <div class="navbar-menu">
             <div class="navbar-end">
-                <NavIcon :checkout="false" icon="apps"/>
-                <NavIcon :checkout="false" icon="account"/>
                 <a
                 @click="openCheckout"
                 class="navbar-item"
                 role="button">
-                <b-icon icon="cart" style="color: red;" size="is-medium" ></b-icon>
+                <b-icon icon="shopping-cart" style="color: red;" size="is-medium" ></b-icon>
             </a>
+            <NavIcon :checkout="false" icon="user"/>
             </div>
         </div>
         </template>

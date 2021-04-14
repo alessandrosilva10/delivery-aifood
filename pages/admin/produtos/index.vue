@@ -1,16 +1,17 @@
 <template>
   <div>
-    <Menu />
-    <p style="padding-top: 50px; padding-bottom: 50px; text-align:center;">PAINEL ADMINISTRATIVO AIFOOD</p>
-    <b-tabs v-model="activeTab" type="is-toggle" expanded>
+    <AdminNavbar />
+    <h1 style="padding-top: 100px; padding-bottom: 50px; font-size: 16px; font-family: Comic Sans MS; text-align:center;">PAINEL ADMINISTRATIVO</h1>
+
+
+    <!--<b-tabs v-model="activeTab" type="is-toggle" expanded>
         <b-tab-item label="Listar Produtos" icon="google-photos">
-          1
-            <!--<h1 style="padding-bottom: 50px; margin-top: 50px; text-align: center; font-size: 22px">Produtos</h1>-->
-          <!-- <b-table :bordered="true" :data="data" :columns="columns"></b-table>-->
+
+            <h1 style="padding-bottom: 50px; margin-top: 50px; text-align: center; font-size: 22px">Produtos</h1>
+           <b-table :bordered="true" :data="data" :columns="columns"></b-table>
         </b-tab-item>
         <b-tab-item label="Cadastrar Produtos" icon="video">
-          2
-             <!--  <section style="padding-left: 200px; padding-right: 200px;" class="container">
+         <section style="padding-left: 200px; padding-right: 200px;" class="container">
         <div class="block">
             <b-radio v-model="labelPosition"
                 native-value="on-border">
@@ -132,17 +133,19 @@
                 <b-button class="button is-primary">Search</b-button>
             </p>
         </b-field>
-    </section>-->
+    </section>
         </b-tab-item>
-    </b-tabs>
+    </b-tabs>-->
   </div>
 </template>
 
 <script>
-import Menu from '@/components/Menu/Menu'
+
+import AdminNavbar from '@/components/AdminNavbar/AdminNavbar'
+
 export default {
   components: {
-    Menu
+    AdminNavbar
   },
           created() {
            this.$forceUpdate();
@@ -192,6 +195,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

@@ -5,8 +5,8 @@
     <Navbar />
       <div class="voucher">
       <b-icon
-            icon="cash"
-            size="is-large"
+            icon="dollar-sign"
+            size="is-small"
             style="color: white;"
       /> <p>Você tem 8 cupons! Aproveite seus descontos</p>
     </div>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+// b-icon use it --> https://fontawesome.com/icons/dollar-sign?style=solid
+// NavIcon use --> https://materialdesignicons.com/icon/cart
 import Card from '~/components/Card'
 import Navbar from '~/components/Navbar/Navbar'
 import Carousel from '~/components/Carousel/Carousel'
