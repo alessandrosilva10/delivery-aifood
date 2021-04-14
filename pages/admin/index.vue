@@ -3,73 +3,153 @@
     <div class="columns is-mobile">
       <div class="column">
         <AdminNavbar />
-
-      <h1 style="padding-top: 100px; padding-bottom: 50px; font-size: 16px; font-family: Comic Sans MS; text-align:center;">PAINEL ADMINISTRATIVO</h1>
-      <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
+      <h1 style="padding-top: 60px; font-size: 16px; font-family: Comic Sans MS; text-align:center;">PAINEL ADMINISTRATIVO</h1>
+      <!--<apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
       <div id="chart">
         <apexchart type="line" height="350" :options="chartOptions" :series="series"></apexchart>
       </div>
 
          <div id="chart">
         <apexchart type="area" height="350" :options="chartOptions" :series="series"></apexchart>
-      </div>
+      </div>-->
 
     </div>
   </div>
   <div>
-
   <div class="columns">
-  <div class="column is-2">
-    <br><br><br><br>
-    teste <br><br><br><br>
-    <div class="card">
-  <header class="card-header">
-    <p class="card-header-title">
-      Component
-    </p>
-       <!-- <div>
+    <div class="column is-one-fifth">
+      <h1 style="padding-bottom: 10px; font-size: 16px; text-align:center;">
+        <b-icon
+            style="color: grey"
+            icon="user"
+            size="is-small"
+          /> Últimos clientes</h1>
+      <b-table
+            :data="isEmpty ? [] : data"
+            :bordered="isBordered"
+            :striped="isStriped"
+            :narrowed="isNarrowed"
+            :hoverable="isHoverable"
+            :loading="isLoading"
+            :focusable="isFocusable"
+            :mobile-cards="hasMobileCards">
 
-      <md-icon class="fa fa-plus"></md-icon>
-      <md-icon class="fa fa-thumbs-up"></md-icon>
-      <md-icon class="fa fa-shield"></md-icon>
-      <md-icon class="fa fa-home"></md-icon>
-    </div>-->
-    <button class="card-header-icon" aria-label="more options">
-      <span class="icon">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </header>
-  <div class="card-content">
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-      <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-      <br>
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            <b-table-column field="id" label="ID" width="40" :td-attrs="columnTdAttrs" numeric v-slot="props">
+                {{ props.row.id }}
+            </b-table-column>
+
+            <b-table-column field="first_name" label="First Name" :td-attrs="columnTdAttrs" v-slot="props">
+                {{ props.row.first_name }}
+            </b-table-column>
+
+            <b-table-column field="last_name" label="Last Name" :td-attrs="columnTdAttrs" v-slot="props">
+                {{ props.row.last_name }}
+            </b-table-column>
+
+            <b-table-column field="date" label="Date" :th-attrs="dateThAttrs" :td-attrs="columnTdAttrs" centered v-slot="props">
+                <span class="tag is-success">
+                    {{ new Date(props.row.date).toLocaleDateString() }}
+                </span>
+            </b-table-column>
+
+           <!-- <b-table-column label="Gender" :td-attrs="columnTdAttrs" v-slot="props">
+                <span>
+                    <b-icon
+                        v-if="props.row.id !== 'Total'"
+                        pack="fas"
+                        :icon="props.row.gender === 'Male' ? 'mars' : 'venus'">
+                    </b-icon>
+                    {{ props.row.gender }}
+                </span>
+            </b-table-column>-->
+
+            <template #empty>
+                <div class="has-text-centered">No records</div>
+            </template>
+
+        </b-table>
+
+
+    </div>
+    <div class="column">
+
+
+<div class="column">
+    <div style="background-color: rgba(242, 241, 239, 1) !important;" class="card">
+      <div class="card-content">
+        <div class="content has-text-centered">
+          <b-icon
+          style="color: grey"
+            icon="user"
+            size="is-large"
+          />
+          asd
+          s
+          das
+          das
+          das
+          as
+          das
+          das
+          d
+          asdasd
+          sad
+          asdsa
+          sa
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+      </div>
     </div>
   </div>
-  <footer class="card-footer">
-    <a href="#" class="card-footer-item">Save</a>
-    <a href="#" class="card-footer-item">Edit</a>
-    <a href="#" class="card-footer-item">Delete</a>
-  </footer>
-</div>
-</div>
-</div>
 
-            </div>
+    </div>
+    <div class="column is-one-fifth">
+      <h1 style="padding-bottom: 10px; font-size: 16px; text-align:center;">
+        <b-icon
+            style="color: green"
+            icon="money-bill-wave"
+            size="is-small"
+          /> Últimos pedidos</h1>
+      <Requests />
+    </div>
+  </div>
+</div>
+<Footer/>
   </div>
 </template>
 
 <script>
 import AdminNavbar from '@/components/AdminNavbar/AdminNavbar'
+import Requests from '@/components/Requests/Requests'
+import Footer from '@/components/Footer/Footer'
 
 export default {
   components: {
-    AdminNavbar
+    AdminNavbar, Requests, Footer
   },
   data: function() {
     return {
+      isEmpty: false,
+                isBordered: false,
+                isStriped: true,
+                isNarrowed: false,
+                isHoverable: true,
+                isFocusable: true,
+                isLoading: false,
+                hasMobileCards: true,
+      data: [
+                { 'id': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016/10/15 13:43:27' },
+                { 'id': 2, 'first_name': 'John', 'last_name': 'Jacobs', 'date': '2016/12/15 06:00:53'},
+                { 'id': 3, 'first_name': 'Tina', 'last_name': 'Gilbert', 'date': '2016/04/26 06:26:28'},
+                { 'id': 4, 'first_name': 'Clarence', 'last_name': 'Flores', 'date': '2016/04/10 10:28:46'},
+                { 'id': 5, 'first_name': 'Anne', 'last_name': 'Lee', 'date': '2016/12/06 14:38:38'},
+                { 'id': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016/10/15 13:43:27' },
+                { 'id': 2, 'first_name': 'John', 'last_name': 'Jacobs', 'date': '2016/12/15 06:00:53'},
+                { 'id': 3, 'first_name': 'Tina', 'last_name': 'Gilbert', 'date': '2016/04/26 06:26:28'},
+                { 'id': 4, 'first_name': 'Clarence', 'last_name': 'Flores', 'date': '2016/04/10 10:28:46'},
+                { 'id': 5, 'first_name': 'Anne', 'last_name': 'Lee', 'date': '2016/12/06 14:38:38'},
+                { 'id': 5, 'first_name': 'Anne', 'last_name': 'Lee', 'date': '2016/12/06 14:38:38'},
+            ],
       options: {
         chart: {
           id: 'vuechart-example'
@@ -171,6 +251,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.tabs li.is-active a{
+  text-decoration: none;
+}
 </style>
