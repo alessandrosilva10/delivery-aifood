@@ -125,6 +125,7 @@ export default {
   },*/
 mounted: function() {
    socket.on('posts', datasocket => {
+     console.log(datasocket.content)
      this.items.push(datasocket.content)
    })
 },
