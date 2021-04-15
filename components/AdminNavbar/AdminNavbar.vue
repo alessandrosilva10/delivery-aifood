@@ -1,5 +1,5 @@
 <template>
-<div>
+<div >
  <b-navbar :centered="true" :fixed-top="false">
        <!-- <template #brand>
           <BrandIcon  class="navbar-item" :brand_logo="brand_logo" />
@@ -8,52 +8,52 @@
            <div role="navigation" aria-label="main navigation">
             <div class="navbar-start">
             <b-tooltip label="Cadastrar"
-                type="is-dark"
+                type="is-info"
                   position="is-bottom"
                     class="navbar-item"
                   square>
-                <b-icon icon="plus" style="color: grey;" size="is-large" ></b-icon>
+                <b-icon icon="plus" class="icons" style="color: white;" size="is-large" ></b-icon>
               </b-tooltip>
 
 
                      <b-tooltip label="Listar Produtos"
-                       type="is-dark"
+                       type="is-info"
             position="is-bottom"
               class="navbar-item"
             square>
-           <b-icon icon="eye" style="color: grey;" size="is-large" ></b-icon>
+           <b-icon icon="eye" class="icons" style="color: white;" size="is-large" ></b-icon>
         </b-tooltip>
 
              <b-tooltip label="Carrinho"
-                      type="is-dark"
+                      type="is-info"
             position="is-bottom"
               class="navbar-item"
             square>
-           <b-icon icon="shopping-cart" style="color: grey;" size="is-large" ></b-icon>
+           <b-icon icon="shopping-cart" class="icons" style="color: white;" size="is-large" ></b-icon>
         </b-tooltip>
 
 
                      <b-tooltip label="Estatística"
-                     type="is-dark"
+                     type="is-info"
             position="is-bottom"
               class="navbar-item"
             square>
-           <b-icon icon="chart-pie" style="color: grey;" size="is-large" ></b-icon>
+           <b-icon icon="chart-pie" class="icons" style="color: white;" size="is-large" ></b-icon>
         </b-tooltip>
 
                      <b-tooltip label="Perfil"
-                      type="is-dark"
+                      type="is-info"
             position="is-bottom"
               class="navbar-item"
             square>
-           <b-icon icon="user" style="color: grey;" size="is-large" ></b-icon>
+           <b-icon icon="user" class="icons" style="color: white;" size="is-large" ></b-icon>
         </b-tooltip>
-                     <b-tooltip label="Perfil"
-                      type="is-dark"
+                     <b-tooltip label="Sair"
+                      type="is-info"
             position="is-bottom"
               class="navbar-item"
             square>
-           <b-icon icon="user" style="color: grey;" size="is-large" ></b-icon>
+           <b-icon icon="sign-out-alt" class="icons" style="color: white;" size="is-large" ></b-icon>
         </b-tooltip>
             </div>
         </div>
@@ -92,11 +92,18 @@ export default {
 
 <style scoped>
   .navbar {
-    background-color: rgba(242, 241, 239, 1) !important;
+    background-color: white !important;
     height: 10vh !important;
     padding-left: 3vh !important;
     padding-right: 3vh !important;
   }
+
+  @media screen and (max-width: 1024px){
+    .icons{
+      color: grey !important;
+    }
+  }
+
 
   .aifood_logo {
     height: 60px !important;
@@ -115,11 +122,15 @@ export default {
 
   @media screen and (min-width: 1024px){
   .navbar {
-    background-color: rgba(242, 241, 239, 1) !important;
+    background-color:rgba(0, 86, 255, 0.69)!important;
     height: 10vh !important;
     padding-left: 8vh !important;
     padding-right: 8vh !important;
     padding-top: 2vh !important;
   };
   }
+
+.navbar-item:hover {
+    transform: scale(1.5);
+}
 </style>

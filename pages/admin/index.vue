@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background: white">
     <div class="columns is-mobile">
       <div class="column">
         <AdminNavbar />
@@ -20,7 +20,7 @@
     <div class="column is-one-fifth">
       <h1 style="padding-bottom: 10px; font-size: 16px; text-align:center;">
         <b-icon
-            style="color: grey"
+            style="color: black"
             icon="user"
             size="is-small"
           /> Últimos clientes</h1>
@@ -75,27 +75,16 @@
 
 
 <div class="column">
-    <div style="background-color: rgba(242, 241, 239, 1) !important;" class="card">
+    <div style="background-color: white! important;" class="card">
       <div class="card-content">
         <div class="content has-text-centered">
-          <b-icon
-          style="color: grey"
+         <!-- <b-icon
+          style="color: black"
             icon="user"
             size="is-large"
           />
-          asd
-          s
-          das
-          das
-          das
-          as
-          das
-          das
-          d
-          asdasd
-          sad
-          asdsa
-          sa
+          <p style="color: black">
+        </p>-->
           <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
       </div>
@@ -112,9 +101,9 @@
           /> Últimos pedidos</h1>
       <Requests />
     </div>
-  </div>
+  </div><Footer/>
 </div>
-<Footer/>
+
   </div>
 </template>
 
