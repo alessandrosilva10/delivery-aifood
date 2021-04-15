@@ -1,17 +1,18 @@
 <template>
+<client-only>
   <div style="background: white">
     <div class="columns is-mobile">
       <div class="column">
         <AdminNavbar />
       <h1 style="padding-top: 60px; font-size: 16px; font-family: Comic Sans MS; text-align:center;">PAINEL ADMINISTRATIVO</h1>
-      <!--<apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
+      <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
       <div id="chart">
         <apexchart type="line" height="350" :options="chartOptions" :series="series"></apexchart>
       </div>
 
          <div id="chart">
         <apexchart type="area" height="350" :options="chartOptions" :series="series"></apexchart>
-      </div>-->
+      </div>
 
     </div>
   </div>
@@ -104,7 +105,7 @@
   </div><Footer/>
 </div>
 
-  </div>
+  </div></client-only>
 </template>
 
 <script>
@@ -112,12 +113,25 @@ import AdminNavbar from '@/components/AdminNavbar/AdminNavbar'
 import Requests from '@/components/Requests/Requests'
 import Footer from '@/components/Footer/Footer'
 
+import io from "socket.io-client";
+var socket = io.connect("http://localhost:5000");
+
 export default {
   components: {
     AdminNavbar, Requests, Footer
   },
+  /*created(){
+    this.getRealtimeData();
+  },*/
+mounted: function() {
+   socket.on('posts', datasocket => {
+     this.items.push(datasocket.content)
+   })
+},
   data: function() {
     return {
+      columnTdAttrs: 1,
+      dateThAttrs: 1,
       isEmpty: false,
                 isBordered: false,
                 isStriped: true,
