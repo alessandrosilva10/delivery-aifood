@@ -68,16 +68,18 @@ background-image: linear-gradient(315deg, #63a4ff 0%, #63a4ff 74%); width: 50vh;
                     icon-left="backward"
                     :disabled="previous.disabled"
                     @click.prevent="previous.action">
-                    Previous
+                    Anterior
                 </b-button>
+
                 <b-button
+                    style="float: right"
                     outlined
                     type="is-success"
                     icon-pack="fas"
                     icon-right="forward"
                     :disabled="next.disabled"
                     @click.prevent="next.action">
-                    Next
+                    Próximo
                 </b-button>
             </template>
         </b-steps>
@@ -138,3 +140,8 @@ import PaymentImages from '~/components/Stripe/PaymentImages'
   }
     }
 </script>
+
+<style scoped>
+
+
+</style>

@@ -2,7 +2,7 @@
 <section>
 <Navbar/>
 <client-only>
-<div style="margin-top: 200px;" class="columns is-mobile">
+<div style="margin-top: 120px;" class="columns is-mobile">
   <div class="column is-three-fifths is-offset-one-fifth">
     <Steps/>
   </div>
