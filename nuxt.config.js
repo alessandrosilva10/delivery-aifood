@@ -27,8 +27,8 @@ export default {
   plugins: [
     {src: '~/plugins/vue-stripe.js', ssr: false },
     { src: '@/plugins/vue-material-icons', mode: 'client' },
-    { src: '@/plugins/apex-chart', mode: 'client' }
-   //{ src: '~/plugins/paycard.js', mode: 'client' },
+    { src: '@/plugins/apex-chart', mode: 'client' },
+   { src: '~/plugins/socketio.js', mode: 'client' },
 
   ],
 

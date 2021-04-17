@@ -147,6 +147,30 @@ export default {
   components: {
     AdminNavbar
   },
+  sockets: {
+        connect: function () {
+            console.log('socket connected')
+        },
+        customEmit: function (data) {
+            console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+        },
+          test_message(datasocket) {
+    //console.log(datasocket.data);
+  }
+    },
+    methods: {
+        clickButton: function (datasocket) {
+            // $socket is socket.io-client instance
+            this.$socket.emit('test_message', datasocket)
+        }
+    },
+     mounted(){
+      this.sockets.subscribe("connect", data => {
+      this.$socket.emit("test_message", {"data": "teste"})
+    });
+
+    this.sockets.unsubscribe("disconnect");
+      },
           created() {
            this.$forceUpdate();
         },

@@ -4,6 +4,11 @@
     <div class="columns is-mobile">
       <div class="column">
         <AdminNavbar />
+
+         <div>
+{{items}}
+  </div>
+
       <h1 style="padding-top: 60px; font-size: 16px; font-family: Comic Sans MS; text-align:center;">PAINEL ADMINISTRATIVO</h1>
       <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
       <div id="chart">
@@ -113,24 +118,39 @@ import AdminNavbar from '@/components/AdminNavbar/AdminNavbar'
 import Requests from '@/components/Requests/Requests'
 import Footer from '@/components/Footer/Footer'
 
-import io from "socket.io-client";
-var socket = io.connect("http://localhost:5000");
 
 export default {
   components: {
     AdminNavbar, Requests, Footer
   },
-  /*created(){
-    this.getRealtimeData();
-  },*/
-mounted: function() {
-   socket.on('posts', datasocket => {
-     console.log(datasocket.content)
-     this.items.push(datasocket.content)
-   })
-},
+  sockets: {
+        connect: function () {
+            console.log('socket connected')
+        },
+        customEmit: function (data) {
+            console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+        },
+          test_message(datasocket) {
+    //console.log(datasocket.data);
+    this.items = datasocket.data
+  }
+    },
+    methods: {
+        clickButton: function (datasocket) {
+            // $socket is socket.io-client instance
+            this.$socket.emit('test_message', datasocket)
+        }
+    },
+     mounted(){
+      this.sockets.subscribe("connect", data => {
+      this.$socket.emit("test_message", {"data": "teste"})
+    });
+
+    this.sockets.unsubscribe("disconnect");
+      },
   data: function() {
     return {
+      items: [2],
       columnTdAttrs: 1,
       dateThAttrs: 1,
       isEmpty: false,
@@ -141,6 +161,8 @@ mounted: function() {
                 isFocusable: true,
                 isLoading: false,
                 hasMobileCards: true,
+                    isConnected: false,
+      socketMessage: '',
       data: [
                 { 'id': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016/10/15 13:43:27' },
                 { 'id': 2, 'first_name': 'John', 'last_name': 'Jacobs', 'date': '2016/12/15 06:00:53'},
