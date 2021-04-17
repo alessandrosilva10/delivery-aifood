@@ -21,7 +21,7 @@
             </b-step-item>
 
             <b-step-item label="Pagamento" icon="dollar-sign"" :visible="showSocial" :clickable="isStepsClickable">
-  <div style="  align-items: center;
+  <div style="padding-top: 40px; padding-bottom: 100px;     align-items: center;
   display: flex;
   justify-content: center;">
                <div class="is-offset-one-quarter box" style="background-color: #63a4ff;
@@ -37,6 +37,12 @@ background-image: linear-gradient(315deg, #63a4ff 0%, #63a4ff 74%); width: 50vh;
       :elementStyle="style"
       />
       <PaymentImages />
+
+      <b-button style="width: calc(100%);" type="is-primary" inverted outlined @click="pay">      <b-icon
+            icon=""
+            size="is-small"
+      /> Pagar</b-button>
+      <!--
       <button style="
       display: block;
     width: calc(100%);
@@ -48,7 +54,7 @@ background-image: linear-gradient(315deg, #63a4ff 0%, #63a4ff 74%); width: 50vh;
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
-      " @click="pay">pagar</button><br>
+      " @click="pay">pagar</button>--><br>
   </div></div>
 
             </b-step-item>
