@@ -10,8 +10,38 @@
             :label-position="labelPosition"
             :mobile-mode="mobileMode">
             <b-step-item label="Carrinho" icon="cart-plus" :clickable="isStepsClickable">
-                <h1 class="title has-text-centered">Carrinho</h1>
+            <p style="padding-top: 30px; padding-bottom: 30px; text-align: center; font-size: 18px;">{{cartItems.length}} itens no <b-icon icon="shopping-cart"/></p>
 
+<div class="card">
+  <div v-for="items in cartItems" class="card-content">
+
+
+
+               <img style="height: 120px; width: 120px;" :src="getImgModal(items.product_image)" />
+
+
+    <p class="">
+      {{items.value}}
+    </p>
+    <p class="">
+      {{items.total_value}}
+    </p>
+    <b-button  icon-left="trash-alt" @click="removeFromCart(items.total_value)" style="color: #6c757d">REMOVE ITEM</b-button>
+      <hr>
+  </div>
+    <footer class="card-footer">
+    <p class="card-footer-item">
+      <span>
+        View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+      </span>
+    </p>
+    <p class="card-footer-item">
+      <span>
+        Share on <a href="#">Facebook</a>
+      </span>
+    </p>
+  </footer>
+</div>
                 {{cartItems}}
             </b-step-item>
 
@@ -100,13 +130,14 @@ import PaymentImages from '~/components/Stripe/PaymentImages'
     components: {
     PaymentImages
     },
-    computed: {
+    /*computed: {
       cartItems(){
-        return JSON.parse(localStorage.getItem('cartItems'))
+        return JSON.parse(localStorage.getItem('cartItems'));
       }
-    },
+    },*/
         data() {
             return {
+            cartItems: JSON.parse(localStorage.getItem('cartItems')) || [],
             style:  {
       base: {
       width: "50px",
@@ -138,6 +169,24 @@ import PaymentImages from '~/components/Stripe/PaymentImages'
                 mobileMode: 'minimalist'
             }
         },methods: {
+          getImgUrl(image_path) {
+    return require('@/assets/images/'+image_path)
+},
+getImgModal(product_image){
+  return '_nuxt/assets/images/'+product_image
+},
+        removeFromCart(name){
+            localStorage.setItem('cartItems', JSON.stringify(this.cartItems.filter(x => x.total_value !== name)));
+            this.cartItems = JSON.parse(localStorage.getItem('cartItems'))
+            this.$buefy.toast.open({
+                duration: 2500,
+                message: `Produto deletado do carrinho com sucesso! <b>bottom</b>`,
+                position: 'is-top-right',
+                type: 'is-danger'
+            })
+
+            return this.cartItems;
+        },
     onChange(value){
       console.log(value)
     },

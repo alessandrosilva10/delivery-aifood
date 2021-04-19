@@ -118,16 +118,16 @@ getImgModal(){
                 this.$buefy.toast.open({
                     message: 'Pedido adicionado com sucesso!',
                     type: 'is-success',
-                    duration: 1500,
-                    //position: ''
+                    duration: 2500,
+                    position: 'is-top-right'
                 })
             },
             danger() {
                 this.$buefy.toast.open({
-                    duration: 1500,
-                    message: `Something's not good, also I'm on <b>bottom</b>`,
-                    position: 'is-bottom',
-                    type: 'is-danger'
+                    duration: 2500,
+                    message: `<b>Produto já se encontra adicionado no carrinho</b>`,
+                    type: 'is-danger',
+                    position: 'is-top-right'
                 })
             },
 
@@ -138,23 +138,36 @@ getImgModal(){
             "value": this.value,
             "observation": this.observation,
             "quantity": this.quantity_order,
-            "total_value": this.value * this.quantity_order
+            "total_value": this.value * this.quantity_order,
+            "product_image": this.product_image
       }
 
       let tempOrder = [];
       tempOrder.push(order)
 
-      if(localStorage.getItem('cartItems')){
-        tempOrder = tempOrder.concat(JSON.parse(localStorage.getItem('cartItems')));
+      const checkUsername = obj => obj.value === this.value;
+
+      let result;
+
+      if(JSON.parse(localStorage.getItem('cartItems'))){
+        result = JSON.parse(localStorage.getItem('cartItems')).some(checkUsername);
       }
 
-       // Save back to localStorage
-      localStorage.setItem('cartItems', JSON.stringify(tempOrder));
+      if(result){
+        this.danger();
+      }else{
+         if(localStorage.getItem('cartItems')){
+          tempOrder = tempOrder.concat(JSON.parse(localStorage.getItem('cartItems')));
+        }
+         // Save back to localStorage
+         localStorage.setItem('cartItems', JSON.stringify(tempOrder));
+         this.success();
+      }
 
       this.isComponentModalActive = false
       this.quantity_order = 1
       this.observation = ''
-      this.success();
+
       }else{
         alert("No momento a loja está fechada e não está aceitando pedidos!");
       }

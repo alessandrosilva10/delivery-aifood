@@ -42,7 +42,6 @@ export default {
   },
   methods: {
     openCheckout(){
-      alert('a')
       this.$router.push('/checkout')
     }
   }
