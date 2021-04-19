@@ -41,13 +41,12 @@ export default {
    ],
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    ['nuxtjs-stripe', {
-      /* module options */
+    /*['nuxtjs-stripe', {
       publishableKey: 'pk_test_51IW1MBLrIdC5lYpk3Eqqny4PX4tQbniOyHXycjppEhSgkP8nVLDdDW8elbkDF3RTHLXfik1EkkM07yGTtG5D7NYn003Qh6xdTp',
       version: 'v3', // Default
       defer: true, // Default
       async: true // Default
-    }],
+    }],*/
     // https://go.nuxtjs.dev/buefy
     ['nuxt-buefy', {
       defaultIconPack: 'fas',

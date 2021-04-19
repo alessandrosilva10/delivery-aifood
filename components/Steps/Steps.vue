@@ -11,7 +11,8 @@
             :mobile-mode="mobileMode">
             <b-step-item label="Carrinho" icon="cart-plus" :clickable="isStepsClickable">
                 <h1 class="title has-text-centered">Carrinho</h1>
-                Lorem ipsum dolor sit amet.
+
+                {{cartItems}}
             </b-step-item>
 
 
@@ -98,6 +99,11 @@ import PaymentImages from '~/components/Stripe/PaymentImages'
     export default {
     components: {
     PaymentImages
+    },
+    computed: {
+      cartItems(){
+        return JSON.parse(localStorage.getItem('cartItems'))
+      }
     },
         data() {
             return {

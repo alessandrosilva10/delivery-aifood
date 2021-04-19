@@ -13,7 +13,7 @@
     <div class="container">
       <Carousel />
     </div>
-    <Index />
+    <Index :products="products.products" />
     <Footer />
   </section>
 </template>
@@ -26,12 +26,25 @@ import Navbar from '~/components/Navbar/Navbar'
 import Carousel from '~/components/Carousel/Carousel'
 import Index from '~/components/Flexbox/Index'
 import Footer from '~/components/Footer/Footer'
+import { mapState } from 'vuex';
 
 export default {
   name: 'HomePage',
-
   components: {
     Card, Navbar, Carousel, Index, Footer
+  },
+  computed: {
+    ...mapState('products', ['products'])
+  },
+  created() {
+    this.$store.dispatch('products/loadProducts')
+
+    if(process.browser){
+           console.log(localStorage.getItem("cartItems"))
+      }
+
+
+
   }
 }
 </script>
