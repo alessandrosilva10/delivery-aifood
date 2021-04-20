@@ -36,12 +36,16 @@ export default {
   computed: {
     ...mapState('products', ['products'])
   },
+  data(){
+    return{
+
+    }
+  },
   created() {
     this.$store.dispatch('products/loadProducts')
-
     if(process.browser){
-           //console.log(localStorage.getItem("cartItems"))
-      }
+     //this.cartLength = JSON.parse(localStorage.getItem('cartItems')).length;
+    }
   }
 }
 </script>

@@ -6,17 +6,19 @@
           <BrandIcon :brand_logo="brand_logo" />
         </template>
         <template #start>
-                   <div class="navbar-search">
+             <div class="navbar-search">
           <NavSearch />
         </div>
         </template>
         <template #end>
           <div class="navbar-menu">
             <div class="navbar-end">
+
                 <a
                 @click="openCheckout"
                 class="navbar-item"
                 role="button">
+                {{cartLength}}
                 <b-icon icon="shopping-cart" style="color: red;" size="is-medium" ></b-icon>
             </a>
             <NavIcon :checkout="false" icon="user"/>
@@ -35,9 +37,10 @@ export default {
   components: {
     NavIcon, BrandIcon, NavSearch
   },
+  props: ['cartLength'],
   data() {
     return {
-      brand_logo: "https://www.freepnglogos.com/uploads/logo-ifood-png/ifood-pizzaria-santa-clara-logo-phone-mobile-ifood-png-6.png"
+      brand_logo: "https://www.freepnglogos.com/uploads/logo-ifood-png/ifood-pizzaria-santa-clara-logo-phone-mobile-ifood-png-6.png",
     }
   },
   methods: {

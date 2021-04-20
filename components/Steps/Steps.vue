@@ -14,12 +14,7 @@
 
 <div class="card">
   <div v-for="items in cartItems" class="card-content">
-
-
-
-               <img style="height: 120px; width: 120px;" :src="getImgModal(items.product_image)" />
-
-
+       <img style="height: 120px; width: 120px;" :src="getImgModal(items.product_image)" />
     <p class="">
       {{items.value}}
     </p>
@@ -42,7 +37,7 @@
     </p>
   </footer>
 </div>
-                {{cartItems}}
+                {{cartItems}}{{cartItemsLength}}
             </b-step-item>
 
 
@@ -130,15 +125,11 @@ import PaymentImages from '~/components/Stripe/PaymentImages'
     components: {
     PaymentImages
     },
-    /*computed: {
-      cartItems(){
-        return JSON.parse(localStorage.getItem('cartItems'));
-      }
-    },*/
-        data() {
-            return {
-            cartItems: JSON.parse(localStorage.getItem('cartItems')) || [],
-            style:  {
+    data() {
+      return {
+      cartItems: JSON.parse(localStorage.getItem('cartItems')) || [],
+      cartItemsLength: JSON.parse(localStorage.getItem('cartItems')).length || 0,
+      style:  {
       base: {
       width: "50px",
         fontSize: "18px",
@@ -178,6 +169,7 @@ getImgModal(product_image){
         removeFromCart(name){
             localStorage.setItem('cartItems', JSON.stringify(this.cartItems.filter(x => x.total_value !== name)));
             this.cartItems = JSON.parse(localStorage.getItem('cartItems'))
+            this.cartItemsLength = JSON.parse(localStorage.getItem('cartItems')).length,
             this.$buefy.toast.open({
                 duration: 2500,
                 message: `Produto deletado do carrinho com sucesso! <b>bottom</b>`,

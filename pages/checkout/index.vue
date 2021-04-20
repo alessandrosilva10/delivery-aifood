@@ -4,6 +4,7 @@
 <client-only>
 <div style="margin-top: 120px;" class="columns is-mobile">
   <div class="column is-three-fifths is-offset-one-fifth">
+
     <Steps/>
   </div>
 </div>
@@ -80,10 +81,16 @@ export default {
     //this.items = datasocket.data
   }
     },
+    created(){
+    /*if(process.browser){
+      if(JSON.parse(localStorage.getItem('cartItems'))){
+         this.cartLength = JSON.parse(localStorage.getItem('cartItems')).length;
+      }
+    }*/
+  },
   data () {
     this.pulishableKey = 'pk_test_51IW1MBLrIdC5lYpk3Eqqny4PX4tQbniOyHXycjppEhSgkP8nVLDdDW8elbkDF3RTHLXfik1EkkM07yGTtG5D7NYn003Qh6xdTp';
     return {
-      token: null,
       style:  {
       base: {
         fontSize: "18px",

@@ -101,7 +101,8 @@ export default {
       product_name: 'coxinha.png',
       quantity_order: 1,
       value: '',
-      observation: ''
+      observation: '',
+      Alength: 0
     }
   },
   methods: {
@@ -152,6 +153,8 @@ getImgModal(){
       if(JSON.parse(localStorage.getItem('cartItems'))){
         result = JSON.parse(localStorage.getItem('cartItems')).some(checkUsername);
       }
+
+
 
       if(result){
         this.danger();
