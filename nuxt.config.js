@@ -5,7 +5,7 @@ export default {
   head: {
     title: 'Aifood',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'pt-br'
     },
     meta: [
       { charset: 'utf-8' },
