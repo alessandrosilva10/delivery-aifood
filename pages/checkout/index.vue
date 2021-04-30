@@ -1,11 +1,12 @@
 <template>
 <section>
-<Navbar/>
+<Navbar :fixedTop="false"/>
 <client-only>
 <div style="margin-top: 120px;" class="columns is-mobile">
-  <div class="column is-three-fifths is-offset-one-fifth">
+  <div class="column is-half
+is-offset-one-quarter">
 
-    <Steps/>
+    <Steps :totalStoreCart="totalStoreCart" :getImgUrl="getImgUrl" :getImgModal="getImgModal" :cartItems="cartItems" :cartItemsLength="cartItemsLength"/>
   </div>
 </div>
 
@@ -77,20 +78,18 @@ export default {
             console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
         },
        test_message(datasocket) {
-     this.$store.dispatch('setOrders', datasocket.data);
-    //this.items = datasocket.data
+     //this.$store.dispatch('setOrders', datasocket.data);
+     console.log(datasocket.data)
+    this.items = datasocket.data
   }
     },
-    created(){
-    /*if(process.browser){
-      if(JSON.parse(localStorage.getItem('cartItems'))){
-         this.cartLength = JSON.parse(localStorage.getItem('cartItems')).length;
-      }
-    }*/
-  },
+    //https://github.com/vuejs/vuex/issues/136
   data () {
     this.pulishableKey = 'pk_test_51IW1MBLrIdC5lYpk3Eqqny4PX4tQbniOyHXycjppEhSgkP8nVLDdDW8elbkDF3RTHLXfik1EkkM07yGTtG5D7NYn003Qh6xdTp';
     return {
+      cartItems: this.$store.getters['cart/StoreCart'],
+      cartItemsLength: this.$store.getters['cart/StoreCartLength'],
+      totalStoreCart: this.$store.getters['cart/TotalStoreCart'],
       style:  {
       base: {
         fontSize: "18px",
@@ -110,7 +109,27 @@ export default {
     }
     }
   },
+  created(){
+
+  },
+  computed: {
+    getCartItemsLength(){
+      if(process.browser){
+          if(localStorage.getItem('cartItems')){
+            console.log(JSON.parse(localStorage.getItem('cartItems')))
+            return JSON.parse(localStorage.getItem('cartItems')).length;
+          }
+          return 0;
+      }
+    },
+  },
   methods: {
+    getImgUrl(image) {
+    return `images/${image}`
+},
+getImgModal(product_image){
+   return `images/${product_image}`
+},
     onChange(value){
       console.log(value)
     },

@@ -1,7 +1,7 @@
 <template>
 
 <div>
- <b-navbar :fixed-top="true">
+ <b-navbar :fixed-top="fixedTop">
         <template #brand>
           <BrandIcon :brand_logo="brand_logo" />
         </template>
@@ -37,7 +37,7 @@ export default {
   components: {
     NavIcon, BrandIcon, NavSearch
   },
-  props: ['cartLength'],
+  props: ['cartLength', 'fixedTop'],
   data() {
     return {
       brand_logo: "https://www.freepnglogos.com/uploads/logo-ifood-png/ifood-pizzaria-santa-clara-logo-phone-mobile-ifood-png-6.png",
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     openCheckout(){
-      this.$router.push('/checkout')
+      window.location.replace("/checkout");
     }
   }
 }
@@ -60,6 +60,7 @@ export default {
   }
 
   .aifood_logo {
+        cursor: pointer;
     height: 80px !important;
     padding-top: 15px !important;
   }

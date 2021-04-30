@@ -1,28 +1,29 @@
 <template>
     <section>
-        <b-carousel-list
+        <b-carousel-list 
+            :items-to-show="perList"
+            :has-shadow="false"
             class="carousel"
             v-model="values"
             :data="items"
             :arrow="arrow"
-            :arrow-hover="arrowHover"
-            :items-to-show="perList"
+            :arrow-hover="arrowHover"   
             :items-to-list="increment"
             :repeat="repeat"
             :has-drag="drag"
             :has-grayscale="gray"
             :has-opacity="opacity"
             @click.native="test"
-          />
+        />
     </section>
 </template>
 
 <script>
 export default {
+    props: ['items'],
     methods: {
       test() {
 
-        console.log('values')
       }
     },
     data() {
@@ -34,98 +35,12 @@ export default {
             opacity: false,
             overlay: true,
             values: 1,
-            perList: 8,
+            perList: 10,
             increment: 1,
-            repeat: true,
-            items: [
-                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-                                {
-                    title: 'Coxinha',
-                    image: require('@/assets/images/10reais.png'),
-                    url: 'www.google.com'
-                },
-            ]
+            repeat: true
         }
     }
 }
 </script>
-<style scoped>
-.carousel-slide{
-  width: 1176px !important;
-  height: 1176px !important;
-}
+<style>
 </style>

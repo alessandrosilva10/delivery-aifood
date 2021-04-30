@@ -12,19 +12,30 @@
             <b-step-item label="Carrinho" icon="cart-plus" :clickable="isStepsClickable">
             <p style="padding-top: 30px; padding-bottom: 30px; text-align: center; font-size: 18px;">{{cartItems.length}} itens no <b-icon icon="shopping-cart"/></p>
 
-<div class="card">
-  <div v-for="items in cartItems" class="card-content">
-       <img style="height: 120px; width: 120px;" :src="getImgModal(items.product_image)" />
-    <p class="">
-      {{items.value}}
-    </p>
-    <p class="">
-      {{items.total_value}}
-    </p>
-    <b-button  icon-left="trash-alt" @click="removeFromCart(items.total_value)" style="color: #6c757d">REMOVE ITEM</b-button>
+            <div class="card">
+              <div v-for="items in cartItems" :key="items.name" class="card-content">
+                <div class="columns is-mobile is-centered">
+                  <div class="column ">
+
+
+                <img style="padding-left: 40px; max-width: 170px"  :src="getImgModal(items.product_image)" />
+
+
+      </div>
+      <div class="column">
+                {{items.name}}  {{items.product_image}}{{items.value}}
+      <br><br>
+         <b-button  icon-left="trash-alt" @click="removeFromCart(items.total_value)" style="color: #6c757d; font-size: 12px;">REMOVE ITEM</b-button>
+      </div>
+      <div style=" margin-right: 10px;" class="column">
+         <b-numberinput  v-model="items.quantity" style="padding-bottom: 50px;" controls-position="compact" min="1"></b-numberinput>
+         <p style="float: right"><strong>R${{items.value}}</strong></p>
+      </div>
+    </div>
       <hr>
+
   </div>
-    <footer class="card-footer">
+   <!-- <footer class="card-footer">
     <p class="card-footer-item">
       <span>
         View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
@@ -35,18 +46,16 @@
         Share on <a href="#">Facebook</a>
       </span>
     </p>
-  </footer>
+  </footer>-->
+  <strong style="float: right;">Total: R${{totalStoreCart.toFixed(2)}}</strong>
 </div>
-                {{cartItems}}{{cartItemsLength}}
             </b-step-item>
-
-
-            <b-step-item label="Perfil" icon="user":clickable="isStepsClickable" :type="{'is-success': isProfileSuccess}">
+            <b-step-item label="Perfil" icon="user" :clickable="isStepsClickable" :type="{'is-success': isProfileSuccess}">
                 <h1 class="title has-text-centered">Perfil</h1>
                 Lorem ipsum dolor sit amet.
             </b-step-item>
 
-            <b-step-item label="Pagamento" icon="dollar-sign"" :visible="showSocial" :clickable="isStepsClickable">
+            <b-step-item label="Pagamento" icon="dollar-sign" :visible="showSocial" :clickable="isStepsClickable">
   <div style="padding-top: 40px; padding-bottom: 100px;     align-items: center;
   display: flex;
   justify-content: center;">
@@ -123,12 +132,11 @@ import PaymentImages from '~/components/Stripe/PaymentImages'
 
     export default {
     components: {
-    PaymentImages
+      PaymentImages
     },
+    props: ['cartItems', 'cartItemsLength', 'getImgUrl', 'getImgModal', 'totalStoreCart'],
     data() {
       return {
-      cartItems: JSON.parse(localStorage.getItem('cartItems')) || [],
-      cartItemsLength: JSON.parse(localStorage.getItem('cartItems')).length || 0,
       style:  {
       base: {
       width: "50px",
@@ -160,12 +168,9 @@ import PaymentImages from '~/components/Stripe/PaymentImages'
                 mobileMode: 'minimalist'
             }
         },methods: {
-          getImgUrl(image_path) {
-    return require('@/assets/images/'+image_path)
-},
-getImgModal(product_image){
-  return '_nuxt/assets/images/'+product_image
-},
+        storeItems(items){
+          console.log(items)
+        },
         removeFromCart(name){
             localStorage.setItem('cartItems', JSON.stringify(this.cartItems.filter(x => x.total_value !== name)));
             this.cartItems = JSON.parse(localStorage.getItem('cartItems'))
@@ -195,6 +200,18 @@ getImgModal(product_image){
 </script>
 
 <style scoped>
+p {
+display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 100%;
+    font-weight: 400;
+}
 
-
+card {
+   border: 2px solid grey;
+  border-radius: 5px;
+}
 </style>

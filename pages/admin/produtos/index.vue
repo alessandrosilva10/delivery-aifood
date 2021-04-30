@@ -155,7 +155,7 @@ export default {
             console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
         },
           test_message(datasocket) {
-    //console.log(datasocket.data);
+    console.log(datasocket.data);
   }
     },
     methods: {
@@ -169,7 +169,7 @@ export default {
       this.$socket.emit("test_message", {"data": "teste"})
     });
 
-    this.sockets.unsubscribe("disconnect");
+    //this.sockets.unsubscribe("disconnect");
       },
           created() {
            this.$forceUpdate();

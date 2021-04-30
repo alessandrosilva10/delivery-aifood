@@ -117,8 +117,6 @@
 import AdminNavbar from '@/components/AdminNavbar/AdminNavbar'
 import Requests from '@/components/Requests/Requests'
 import Footer from '@/components/Footer/Footer'
-
-
 export default {
   components: {
     AdminNavbar, Requests, Footer
@@ -145,8 +143,7 @@ export default {
       this.sockets.subscribe("connect", data => {
       this.$socket.emit("test_message", {"data": "teste"})
     });
-
-    this.sockets.unsubscribe("disconnect");
+    //this.sockets.unsubscribe("disconnect");
       },
   data: function() {
     return {

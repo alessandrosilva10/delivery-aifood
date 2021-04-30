@@ -31,7 +31,8 @@ export default {
     { src: '@/plugins/vue-material-icons', mode: 'client' },
     { src: '@/plugins/apex-chart', mode: 'client' },
    { src: '~/plugins/socketio.js', mode: 'client' },
-
+   { src: '~/plugins/maps.js', mode: 'client' },
+   { src: '~/plugins/vue-persist.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,6 +42,7 @@ export default {
   buildModules: [
 
    ],
+   transpileDependencies: ['vuex-persist'],
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     /*['nuxtjs-stripe', {

@@ -20,7 +20,7 @@
                     <b-field label="">
 
                             <figure class="image is-3by2">
-               <img class="" :src="getImgModal()"" :alt="s.brand">
+               <img class="" :src="getImgModal()" :alt="s.brand">
               </figure>
                     </b-field>
                 </div>
@@ -42,10 +42,10 @@
             </b-button>
 
       <b-numberinput v-model="quantity_order" style="margin-left: 20px;  background-color: red; color: white" controls-position="compact" @click="quantity_order++" min="1"></b-numberinput>
-
               <b-button
               style="margin-left: 20px; background-color: red; color: white"
                 icon-left="plus"
+
                 @click="addOrder"
                 >
                 Adicionar
@@ -59,12 +59,12 @@
             </div>
         </b-modal>
     </section>
-        <div class="card" style="height: 100%" @click="openModal(s.image_path, s.price, s.name)">
+        <div class="card" style="height: 100%" @click="openModal(s.image, s.price, s.name)">
           <div class="card-content">
             <div class="media">
               <div class="media-left">
               <figure class="image is-128x128">
-               <img class="store_img" :src="getImgUrl(s.image_path)" :alt="s.brand">
+               <img class="store_img" :src="getImgUrl(s.image)" :alt="s.brand">
               </figure>
               </div>
               <div class="media-content">
@@ -102,16 +102,37 @@ export default {
       quantity_order: 1,
       value: '',
       observation: '',
-      Alength: 0
     }
   },
+  computed: {
+    cartCount() {
+      return this.StoreCart.length;
+    },
+  },
+  created() {
+   //console.log(this.$store.getters['cart/StoreCartState'])
+  },
   methods: {
-  getImgUrl(image_path) {
-    return require('@/assets/images/'+image_path)
-},
-getImgModal(){
-  return '_nuxt/assets/images/'+this.product_image
-},
+  /* addToCart() {
+   let order = {
+            "name": this.product_name,
+            "value": this.value,
+            "observation": this.observation,
+            "quantity": this.quantity_order,
+            "total_value": this.value * this.quantity_order,
+            "product_image": this.product_image
+      }
+
+      this.$store.dispatch("cart/addItem", order);
+      alert("added")
+        console.log(this.$store.getters['cart/StoreCart'])
+    },*/
+  getImgUrl(image) {
+    return `images/${image}`
+  },
+  getImgModal(){
+    return `images/${this.product_image}`
+  },
     toast() {
                 this.$buefy.toast.open('Something happened')
             },
@@ -135,7 +156,7 @@ getImgModal(){
     addOrder(){
       if(this.isLojaOpen){
         let order = {
-            "name": this.name,
+            "name": this.product_name,
             "value": this.value,
             "observation": this.observation,
             "quantity": this.quantity_order,
@@ -154,8 +175,6 @@ getImgModal(){
         result = JSON.parse(localStorage.getItem('cartItems')).some(checkUsername);
       }
 
-
-
       if(result){
         this.danger();
       }else{
@@ -164,6 +183,7 @@ getImgModal(){
         }
          // Save back to localStorage
          localStorage.setItem('cartItems', JSON.stringify(tempOrder));
+         this.$store.dispatch("cart/addItem", tempOrder);
          this.success();
       }
 
@@ -172,7 +192,12 @@ getImgModal(){
       this.observation = ''
 
       }else{
-        alert("No momento a loja está fechada e não está aceitando pedidos!");
+         this.$buefy.toast.open({
+          duration: 2500,
+          message: `No momento a loja está fechada e não está aceitando pedidos!`,
+          position: 'is-top-right',
+          type: 'is-danger'
+        })
       }
     },
     openModal(image, value, name){
@@ -189,7 +214,7 @@ getImgModal(){
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   padding-top: 4vh;
 }
@@ -201,6 +226,7 @@ getImgModal(){
 .card:hover {
  border: solid 1px #E5E5E5;
  cursor: pointer;
+transform: scale(1.1);
 }
 
 .store_img {

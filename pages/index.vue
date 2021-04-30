@@ -2,19 +2,24 @@
   <section class="main">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
-    <Navbar />
+    <Navbar :fixedTop="true" :cartLength="this.$store.getters['cart/StoreCartLength']"/>
       <div class="voucher">
       <b-icon
             icon="dollar-sign"
             size="is-small"
             style="color: white;"
       /> <p>Você tem 8 cupons! Aproveite seus descontos</p>
+
     </div>
     <div class="container">
-      <Carousel />
+      <Carousel :items="items"/>
     </div>
-    <Index :products="products.products" />
-    <Footer />
+     <Spinner v-if="isLoading" :isLoading="isLoading" :isFullPage="isFullPage"/>
+     <div v-else >
+       <Index :products="products.products" />
+       <Footer />
+     </div>
+
   </section>
 </template>
 
@@ -25,31 +30,112 @@ import Card from '~/components/Card'
 import Navbar from '~/components/Navbar/Navbar'
 import Carousel from '~/components/Carousel/Carousel'
 import Index from '~/components/Flexbox/Index'
+import Spinner from '~/components/Spinner/Spinner'
 import Footer from '~/components/Footer/Footer'
 import { mapState } from 'vuex';
+
 
 export default {
   name: 'HomePage',
   components: {
-    Card, Navbar, Carousel, Index, Footer
-  },
-  computed: {
-    ...mapState('products', ['products'])
+    Card, Navbar, Carousel, Index, Footer, Spinner
   },
   data(){
-    return{
+    return {
+         isLoading: true,
+                isFullPage: true,
+items: [
+                {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/hotdog_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                },
+                                {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/icecream_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                },
+                                {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/cake_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                },
+                                {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/coke_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                },
+                               {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/burguer_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                },
+                               {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/pizza_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                },
+                               {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/chocolate_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                },                               {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/fries_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                }, {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/hotdog_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                },
+                                {
+                    alt: 'Slide 1',
+                    title: 'Slide 1',
+                    image: "images/icecream_logo.png",
+                    srcFallback: 'https://picsum.photos/id/0/1230/500'
+                },
 
-    }
+
+
+    ]}
+  },
+  computed: {
+   cartLength(){
+       return this.$store.getters['cart/StoreCartLength']
+   },
+    ...mapState('products', ['products']),
   },
   created() {
+
+   /* var text = "#rawString#";
+var key = CryptoJS.enc.Base64.parse("#base64Key#");
+var iv  = CryptoJS.enc.Base64.parse("#base64IV#");
+
+console.log("Initial String:: "+text);
+
+var encrypted = CryptoJS.AES.encrypt(text, key, {iv: iv});
+console.log("Encrypted String:: "+encrypted.toString());
+
+var decrypted = CryptoJS.AES.decrypt(encrypted, key, {iv: iv});
+console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
+
     this.$store.dispatch('products/loadProducts')
-    if(process.browser){
-     //this.cartLength = JSON.parse(localStorage.getItem('cartItems')).length;
-    }
+    setTimeout(() => {
+        this.isLoading = false
+    }, 1200)
   }
 }
 </script>
-<style scoped>
+<style>
  .main {
     background-color: white !important;
     font-family: 'Quicksand', sans-serif;
@@ -69,5 +155,29 @@ export default {
    color: white;
 }
 
+.carousel-list.has-shadow {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.carousel{
+
+}
+.carousel-slide img{
+  margin-top: 40px;
+  height: 90px !important;
+  width: 90px !important;
+}
+
+.carousel-slide img:hover{
+
+}
+
+.image img{
+  width:  120px;
+  height: 120px;
+  display: block;
+  object-fit: fill;
+}
 
 </style>

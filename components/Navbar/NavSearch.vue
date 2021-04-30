@@ -1,6 +1,6 @@
 <template>
-  <b-field message="Busque por um item...">
-    <b-input class="navbar-search-input" placeholder="Pesquisar..."
+  <b-field message="">
+    <b-input class="navbar-search-input" placeholder="Busque por um item..."
         type="search"
         icon="magnify"
         >
