@@ -82,10 +82,10 @@ export default {
         console.log(this.$store.getters['cart/StoreCart'])
     },*/
   getImgUrl(image) {
-    return `images/${image}`
+    return `../images/${image}`
   },
   getImgModal(){
-    return `images/${this.product_image}`
+    return `../images/${this.product_image}`
   },
     toast() {
                 this.$buefy.toast.open('Something happened')
