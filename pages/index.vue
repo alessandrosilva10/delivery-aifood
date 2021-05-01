@@ -135,7 +135,7 @@ console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
 }
 */
 .carousel{
-
+height: 150%;
 }
 .carousel-slide img{
 

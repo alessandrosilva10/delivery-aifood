@@ -46,12 +46,12 @@ export default {
                     srcFallback: 'https://picsum.photos/id/0/1230/500',
                     url: '/cachorro-quente'
                 },
-                                {
+                               {
                     alt: 'Slide 1',
                     title: 'Slide 1',
-                    image: "images/icecream_logo.png",
+                    image: "images/burguer_logo.png",
                     srcFallback: 'https://picsum.photos/id/0/1230/500',
-                    url: '/sorvetes'
+                     url: '/hamburguer'
                 },
                                 {
                     alt: 'Slide 1',
@@ -100,12 +100,12 @@ export default {
                     srcFallback: 'https://picsum.photos/id/0/1230/500',
                      url: '/hotdog'
                 },
-                                {
+                                 {
                     alt: 'Slide 1',
                     title: 'Slide 1',
-                    image: "images/icecream_logo.png",
+                    image: "images/burguer_logo.png",
                     srcFallback: 'https://picsum.photos/id/0/1230/500',
-                     url: '/sorvetes'
+                     url: '/hamburguer'
                 },
 
 
