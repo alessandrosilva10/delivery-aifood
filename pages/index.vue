@@ -122,7 +122,7 @@ console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
 }
 
 .carousel-slide img:hover{
-
+  transform: scale(1.1);
 }
 
 .image img{
