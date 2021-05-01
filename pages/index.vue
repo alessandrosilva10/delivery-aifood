@@ -26,6 +26,7 @@
             style="color: #50a773; padding-left: 2vh"
       />
       </center></span>
+      <br/> <br/> <br/><br/>
     <div class="container">
       <Carousel />
     </div>
@@ -127,12 +128,12 @@ console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
  .voucher  p{
    color: white;
 }
-
+/*
 .carousel-list.has-shadow {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
-
+*/
 .carousel{
 
 }
