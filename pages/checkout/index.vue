@@ -125,10 +125,10 @@ export default {
   },
   methods: {
     getImgUrl(image) {
-    return `images/${image}`
+    return `../images/${image}`
 },
 getImgModal(product_image){
-   return `images/${product_image}`
+   return `../images/${product_image}`
 },
     onChange(value){
       console.log(value)
