@@ -11,6 +11,21 @@
       /> <p>Você tem 8 cupons! Aproveite seus descontos</p>
 
     </div>
+
+     <div class="triangle-topright"></div>
+   <div class="triangle-topleft"></div>
+   <span class="blinking"><center>
+      <b-icon
+            icon="store"
+            size="is-small"
+            style="color: #50a773; padding-right: 2vh"
+      /> A loja está aberta
+      <b-icon
+            icon="clock"
+            size="is-small"
+            style="color: #50a773; padding-left: 2vh"
+      />
+      </center></span>
     <div class="container">
       <Carousel />
     </div>
@@ -92,6 +107,23 @@ console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
     align-items: center;
     margin-top: 4vh;
  }
+
+  .triangle-topleft {
+  width: 0;
+  height: 0;
+  border-top: 100px solid #50a773;
+  border-right: 100px solid transparent;
+}
+
+    .triangle-topright {
+      float: right;
+      width: 0;
+      height: 0;
+      border-top: 100px solid #50a773;
+      border-left: 100px solid transparent;
+    }
+
+
  .voucher  p{
    color: white;
 }
@@ -130,6 +162,19 @@ console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
   height: 120px;
   display: block;
   object-fit: fill;
+}
+
+.blinking{
+    animation:blinkingText 1.5s infinite;
+    font-size: 28px;
+    font-weight: bold;
+}
+@keyframes blinkingText{
+    0%{     color:  #50a773;   }
+    49%{    color:  #50a773; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color:  #50a773;    }
 }
 
 </style>
