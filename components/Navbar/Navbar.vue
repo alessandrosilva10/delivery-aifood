@@ -1,14 +1,25 @@
 <template>
 
 <div>
- <b-navbar :fixed-top="fixedTop">
+ <b-navbar  :fixed-top="fixedTop">
         <template #brand>
-          <BrandIcon :brand_logo="brand_logo" />
-        </template>
-        <template #start>
-             <div class="navbar-search">
+          <BrandIcon :url="'/'" :brand_logo="brand_logo" />
+         <div class="navbar-search">
           <NavSearch />
         </div>
+        </template>
+        <template #start>
+          <div class="mobile-menu">
+          <b-navbar-item href="#">
+                Carrinho
+            </b-navbar-item>
+            <b-navbar-item href="#">
+                Perfil
+            </b-navbar-item>
+            <b-navbar-item href="#">
+                Sair
+            </b-navbar-item>
+          </div>
         </template>
         <template #end>
           <div class="navbar-menu">
@@ -21,6 +32,7 @@
                 {{cartLength}}
                 <b-icon icon="shopping-cart" style="color: red;" size="is-medium" ></b-icon>
             </a>
+
             <NavIcon :checkout="false" icon="user"/>
             </div>
         </div>
@@ -59,10 +71,15 @@ export default {
     padding-right: 30vh !important;
   }
 
+  .mobile-menu{
+    display: none;
+  }
+
   .aifood_logo {
-        cursor: pointer;
+    cursor: pointer;
     height: 80px !important;
     padding-top: 15px !important;
+    padding-left: 5px !important;
   }
   .navbar-search{
       padding-top: 25px !important;
@@ -75,12 +92,33 @@ export default {
     width: 400px !important;
   }
 
-  @media screen and (min-width: 1024px){
+@media (max-width: 1000px) {
+  .aifood_logo {
+    cursor: pointer;
+    height: 45px !important;
+    padding-top: 5px !important;
+  }
   .navbar {
-    background-color: rgba(242, 241, 239, 1) !important;
     height: 10vh !important;
-    padding-left: 30vh !important;
-    padding-right: 30vh !important;
-  };
+    padding-left: 0vh !important;
+    padding-right: 0vh !important;
+  }
+  .navbar-search{
+    padding-top: 2vh !important;
+    padding-left: 1vh !important;
+    width: 68% !important;
+  }
+  .mobile-menu{
+    display: inline-block;
+  }
+}
+
+  @media screen and (min-width: 1024px){
+    .navbar {
+      background-color: rgba(242, 241, 239, 1) !important;
+      height: 10vh !important;
+      padding-left: 30vh !important;
+      padding-right: 30vh !important;
+    }
   }
 </style>

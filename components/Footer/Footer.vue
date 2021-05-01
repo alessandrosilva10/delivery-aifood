@@ -12,7 +12,7 @@
   <div class="column">
   </div>
 </div>
-   <div style="margin-left: 40%; padding-bottom:10px; height: 10px !important;" class="columns is-mobile is-centered">
+   <div class="columns is-mobile is-centered logo">
       <div class="column" style="">
 
            <b-tooltip label="Página principal do aifood"
@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      center: { lat: -22.668490, lng: -50.433550 },
+      center: { lat: -23.5677666, lng: -46.6487763 },
     }
   },
 }
@@ -63,7 +63,24 @@ export default {
 <style scoped>
   .aifood_logo {
     height:50px !important;
-    padding-left: 35px !important;
+    padding-left: 15px !important;
     padding-top: 10px;
   }
+
+  .logo {
+ height: 10px !important;
+padding-top:50px; height: 10px !important;
+        display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
+  }
+  @media (max-width: 1000px) {
+
+      .logo {
+            height: 10px !important;
+       }
+
+}
+
 </style>

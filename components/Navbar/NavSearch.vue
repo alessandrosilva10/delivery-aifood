@@ -2,7 +2,7 @@
   <b-field message="">
     <b-input class="navbar-search-input" placeholder="Busque por um item..."
         type="search"
-        icon="magnify"
+        icon="search-dollar"
         >
     </b-input>
     <p class="control">

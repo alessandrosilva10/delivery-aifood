@@ -12,7 +12,7 @@
 
     </div>
     <div class="container">
-      <Carousel :items="items"/>
+      <Carousel />
     </div>
      <Spinner v-if="isLoading" :isLoading="isLoading" :isFullPage="isFullPage"/>
      <div v-else >
@@ -44,69 +44,10 @@ export default {
     return {
          isLoading: true,
                 isFullPage: true,
-items: [
-                {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/hotdog_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                },
-                                {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/icecream_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                },
-                                {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/cake_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                },
-                                {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/coke_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                },
-                               {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/burguer_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                },
-                               {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/pizza_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                },
-                               {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/chocolate_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                },                               {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/fries_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                }, {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/hotdog_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                },
-                                {
-                    alt: 'Slide 1',
-                    title: 'Slide 1',
-                    image: "images/icecream_logo.png",
-                    srcFallback: 'https://picsum.photos/id/0/1230/500'
-                },
+    }
+  },
+    methods: {
 
-
-
-    ]}
   },
   computed: {
    cartLength(){
@@ -164,9 +105,20 @@ console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
 
 }
 .carousel-slide img{
+
+  max-width: 100px;
+  height: 100px;
   margin-top: 40px;
-  height: 90px !important;
-  width: 90px !important;
+
+}
+
+@media (max-width: 1000px) {
+  .carousel-slide img{
+       width: 120% !important;
+      max-width: 40px !important;
+      height: 50px !important;
+      margin-top: 40px !important;
+  }
 }
 
 .carousel-slide img:hover{

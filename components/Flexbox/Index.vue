@@ -6,59 +6,7 @@
     </div>
   </div>
     <div  class="columns is-multiline">
-      <div  v-for="s in products" class="column is-one-quarter" :key="s.name">
-        <section >
-        <b-modal :canCancel="['x']" :active.sync="isComponentModalActive" has-modal-card>
-            <div  class="modal-card" style="width: 900px; height: 500px">
-                <header class="modal-card-head">
-                    <h1 style="text-align: center; font-weight: 500; font-size: 1.0rem" class="modal-card-title">Adicione ao seu pedido</h1>
-                </header>
-                <section class="modal-card-body">
-
-                                <div class="columns is-mobile">
-                <div  class="column is-half">
-                    <b-field label="">
-
-                            <figure class="image is-3by2">
-               <img class="" :src="getImgModal()" :alt="s.brand">
-              </figure>
-                    </b-field>
-                </div>
-                <div class="column is-half">
-                  <p>{{product_name}}</p>
-                  <p>Valor: R${{value}} reais</p>
-                  <p>Assada na hora</p>
-                  <p>Entrega grátis</p>
-                  <br>
-                   <p>Algum comentário?</p>
-                                               <b-field label="">
-            <b-input maxlength="200" v-model="observation" placeholder="Ex: tirar a cabelo, maionese à parte etc." type="textarea"></b-input>
-        </b-field>
-                <b-field label="">
-                 <b-button style=" background-color: red; color: white"
-                                @click="closeModal"
-                icon-left="close">
-                Fechar
-            </b-button>
-
-      <b-numberinput v-model="quantity_order" style="margin-left: 20px;  background-color: red; color: white" controls-position="compact" @click="quantity_order++" min="1"></b-numberinput>
-              <b-button
-              style="margin-left: 20px; background-color: red; color: white"
-                icon-left="plus"
-
-                @click="addOrder"
-                >
-                Adicionar
-            </b-button>
-
-            </b-field>
-
-                    </div>
-              </div>
-                </section>
-            </div>
-        </b-modal>
-    </section>
+      <div  v-for="s in products" class="column is-one-quarter" :key="s.id">
         <div class="card" style="height: 100%" @click="openModal(s.image, s.price, s.name)">
           <div class="card-content">
             <div class="media">
@@ -83,25 +31,31 @@
           </div>
         </div>
       </div>
+      <Modal :isComponentModalActive="isComponentModalActive" :observation="observation" :addOrder="addOrder" :closeModal="closeModal" :quantity_order="quantity_order" :getImgModal="getImgModal" :product_name="product_name" :value="value" />
     </div>
   </div>
 </template>
 
 <script>
+import Modal from '~/components/Modal/Modal'
+
 export default {
+  components: {
+  'Modal' : Modal
+ },
   props: ['products'],
   data(){
     return{
       isLojaOpen: true,
       cartItems: [],
-      isComponentModalActive: false,
       email: '',
       password: '',
-      product_image: '',
       product_name: 'coxinha.png',
+      product_image: '',
+      isComponentModalActive: false,
       quantity_order: 1,
+     observation: '',
       value: '',
-      observation: '',
     }
   },
   computed: {
