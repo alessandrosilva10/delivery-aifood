@@ -3,7 +3,7 @@
     <h1 class="title">Gostaria de fazer o login com a sua conta do aifood?</h1>
     <div class="columns is-centered is-mobile">
       <div class="column">
-      <img class="logo" style="" src="images/chocolate_logo.png" />
+      <img class="logo" style="" src="../images/chocolate_logo.png" />
       {{email}} {{password}}
       </div>
       <div class="column">
