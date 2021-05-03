@@ -115,6 +115,7 @@
                         <div class="column">
                           <vue-hcaptcha  style="  display: table;
                         margin: 0 auto;" sitekey="b928ba3d-0c43-42eb-9a01-27570a8aec49"
+                                language="por"
                                 @verify="onVerify"
                                   @expired="onExpire"
                                   @error="onError"
