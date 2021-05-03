@@ -28,32 +28,36 @@
                   </b-input>
               </b-field>
 
-                  <div class="columns is-centered is-mobile">
-      <div class="column is-2 ">
-               <b-button type="is-success"
-               style="float: left; margin-top: 2vh;"
+<div class="columns">
+  <div class="column">               <b-button type="is-success"
+               style="margin-top: 2vh; float: left;"
                icon-pack="fas"
                 icon-left="sign-in-alt">
                 Entrar
-            </b-button>
-      </div>
-            <div class="column is-8">
-<vue-hcaptcha  style="  display: table;
+            </b-button></div>
+  <div class="column">            <b-button type="is-danger"
+              style="margin-top: 2vh; float: right;"
+              icon-pack="fas"
+              icon-left="user-plus">
+              Cadastrar
+            </b-button></div>
+</div>
+
+
+
+
+
+<div class="columns is-mobile">
+  <div class="column is-half is-offset-one-quarter">
+    <vue-hcaptcha  style="  display: table;
   margin: 0 auto;" sitekey="b928ba3d-0c43-42eb-9a01-27570a8aec49"
           @verify="onVerify"
             @expired="onExpire"
             @error="onError"
   ></vue-hcaptcha>
-      </div>
-            <div class="column is-2 ">
-            <b-button type="is-danger"
-              style="float: right; margin-top: 2vh;"
-              icon-pack="fas"
-              icon-left="user-plus">
-              Cadastrar
-            </b-button>
-      </div>
   </div>
+</div>
+
 
 
 
@@ -123,7 +127,7 @@ body{
 
 .card {
   margin-top: 15vh;
-  width: 100%;
+  width: 75%;
 }
 
 .logo {
