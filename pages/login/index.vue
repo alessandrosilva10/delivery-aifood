@@ -48,7 +48,7 @@
 
 
 <div class="columns is-mobile">
-  <div class="column is-half is-offset-one-quarter">
+  <div class="column">
     <vue-hcaptcha  style="  display: table;
   margin: 0 auto;" sitekey="b928ba3d-0c43-42eb-9a01-27570a8aec49"
           @verify="onVerify"
