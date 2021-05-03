@@ -1,72 +1,134 @@
 <template>
-  <div class="container">
-    <h1 class="title">Gostaria de fazer o login com a sua conta do aifood?</h1>
-    <div class="columns is-centered is-mobile">
-      <div class="column">
-      <img class="logo" style="" :src="getImage()" />
+<client-only>
+      <div v-if="!isMobile">
+        <div class="container">
+          <h1 class="title">Gostaria de fazer o login com a sua conta do aifood?</h1>
+          <div class="columns is-centered is-mobile">
+            <div class="column">
+            <img class="logo" style="" :src="getImage()" />
+            </div>
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                <section style="padding-top: 1vh;">
+                  <h3 class="subtitle">Faça o login com a sua conta</h3>
+                    <b-field>
+                        <b-input placeholder="Email"
+                            v-model="email"
+                            type="email"
+                            icon-pack="fas"
+                            icon="envelope">
+                        </b-input>
+                    </b-field>
+                    <b-field>
+                        <b-input type="password"
+                            v-model="password"
+                              icon-pack="fas"
+                            icon="unlock-alt"
+                            placeholder="Senha"
+                            password-reveal>
+                        </b-input>
+                    </b-field>
+
+      <div class="columns">
+        <div class="column">               <b-button type="is-success"
+                    style="margin-top: 2vh; float: left;"
+                    icon-pack="fas"
+                      icon-left="sign-in-alt">
+                      Entrar
+                  </b-button></div>
+        <div class="column">            <b-button type="is-danger"
+                    style="margin-top: 2vh; float: right;"
+                    icon-pack="fas"
+                    icon-left="user-plus">
+                    Cadastrar
+                  </b-button></div>
       </div>
-      <div class="column">
-        <div class="card">
-          <div class="card-content">
-          <section style="padding-top: 1vh;">
-            <h3 class="subtitle">Faça o login com a sua conta</h3>
-              <b-field>
-                  <b-input placeholder="Email"
-                      v-model="email"
-                      type="email"
-                      icon-pack="fas"
-                      icon="envelope">
-                  </b-input>
-              </b-field>
-              <b-field>
-                  <b-input type="password"
-                      v-model="password"
-                        icon-pack="fas"
-                      icon="unlock-alt"
-                      placeholder="Senha"
-                      password-reveal>
-                  </b-input>
-              </b-field>
-
-<div class="columns">
-  <div class="column">               <b-button type="is-success"
-               style="margin-top: 2vh; float: left;"
-               icon-pack="fas"
-                icon-left="sign-in-alt">
-                Entrar
-            </b-button></div>
-  <div class="column">            <b-button type="is-danger"
-              style="margin-top: 2vh; float: right;"
-              icon-pack="fas"
-              icon-left="user-plus">
-              Cadastrar
-            </b-button></div>
-</div>
 
 
 
 
 
-<div class="columns is-mobile">
-  <div class="column">
-    <vue-hcaptcha  style="  display: table;
-  margin: 0 auto;" sitekey="b928ba3d-0c43-42eb-9a01-27570a8aec49"
-          @verify="onVerify"
-            @expired="onExpire"
-            @error="onError"
-  ></vue-hcaptcha>
+      <div class="columns is-mobile">
+        <div class="column">
+          <vue-hcaptcha  style="  display: table;
+        margin: 0 auto;" sitekey="b928ba3d-0c43-42eb-9a01-27570a8aec49"
+                @verify="onVerify"
+                  @expired="onExpire"
+                  @error="onError"
+        ></vue-hcaptcha>
+        </div>
+      </div>
+
+
+
+
+                </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
   </div>
-</div>
+  <div v-else-if="isMobile">
+        <div class="container">
+          <h1 class="title">Faça o login no Aifood</h1>
+          <div class="columns is-centered is-mobile">
+            <div class="column">
+              <div style="margin-top: 7vh;" class="card">
+                <div class="card-content">
+                <section style="padding-top: 1vh;">
+                  <h3 class="subtitle">Faça o login com a sua conta</h3>
+                    <b-field>
+                        <b-input placeholder="Email"
+                            v-model="email"
+                            type="email"
+                            icon-pack="fas"
+                            icon="envelope">
+                        </b-input>
+                    </b-field>
+                    <b-field>
+                        <b-input type="password"
+                            v-model="password"
+                              icon-pack="fas"
+                            icon="unlock-alt"
+                            placeholder="Senha"
+                            password-reveal>
+                        </b-input>
+                    </b-field>
 
-
-
-
-          </section>
+                    <div class="columns is-centered is-mobile">
+                      <div class="column">               <b-button type="is-success"
+                                  style="margin-top: 2vh; float: left;"
+                                  icon-pack="fas"
+                                    icon-left="sign-in-alt">
+                                    Entrar
+                                </b-button></div>
+                      <div class="column">            <b-button type="is-danger"
+                                  style="margin-top: 2vh; float: right;"
+                                  icon-pack="fas"
+                                  icon-left="user-plus">
+                                  Cadastrar
+                                </b-button></div>
+                    </div>
+                      <div class="columns is-mobile">
+                        <div class="column">
+                          <vue-hcaptcha  style="  display: table;
+                        margin: 0 auto;" sitekey="b928ba3d-0c43-42eb-9a01-27570a8aec49"
+                                @verify="onVerify"
+                                  @expired="onExpire"
+                                  @error="onError"
+                        ></vue-hcaptcha>
+                        </div>
+                      </div>
+                </section>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+     </div>
+     </client-only>
 </template>
 
 <script>
@@ -83,6 +145,17 @@ export default {
       token: null,
       eKey: null,
       error: null,
+    }
+  },
+ computed: {
+    isMobile () {
+      if (process.client) {
+          if (screen.width <= 760) {
+            return true
+          } else {
+            return false
+        }
+      }
     }
   },
     methods: {
@@ -125,10 +198,12 @@ body{
   padding-top: 15vh; text-align:center; color: white; font-family: Roboto,sans-serif; font-size: 5vh;
 }
 
-.card {
+@media (min-width:960px) { .card {
   margin-top: 15vh;
   width: 75%;
 }
+ }
+
 
 .logo {
 width: 50%;
