@@ -71,7 +71,7 @@
         </div>
   </div>
   <div v-else-if="isMobile">
-        <div class="container">
+        <div class="">
           <h1 class="title">Faça o login no Aifood</h1>
           <div class="columns is-centered is-mobile">
             <div class="column">
@@ -157,10 +157,10 @@ export default {
         }
       }
     }
-  },
+},
     methods: {
         getImage(){
-          return "../images/chocolate_logo.png";
+          return "../images/hotdog_logo.png";
         },
         onVerify(token, ekey) {
             this.verified = true;
@@ -191,7 +191,11 @@ export default {
 
 <style >
 body{
-  background: linear-gradient(to right, rgba(34, 167, 240, 1), rgba(137, 196, 244, 1));
+  background: linear-gradient(to right, rgba(34, 167, 240, 1), rgba(137, 196, 244, 1)) !important;
+}
+
+html.md-theme-default {
+    background-color: var(--md-theme-default-text-primary-on-background-variant,  linear-gradient(to right, rgba(34, 167, 240, 1), rgba(137, 196, 244, 1)) ) !important;
 }
 
 .title {
@@ -207,7 +211,7 @@ body{
 
 .logo {
 width: 50%;
-margin-top: 12vh;
+margin-top: 15vh;
 }
 
 .subtitle {
