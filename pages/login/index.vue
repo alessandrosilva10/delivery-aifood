@@ -40,7 +40,11 @@
       </div>
             <div class="column is-8">
 <vue-hcaptcha  style="  display: table;
-  margin: 0 auto;" sitekey="b928ba3d-0c43-42eb-9a01-27570a8aec49"></vue-hcaptcha>
+  margin: 0 auto;" sitekey="b928ba3d-0c43-42eb-9a01-27570a8aec49"
+          @verify="onVerify"
+            @expired="onExpire"
+            @error="onError"
+  ></vue-hcaptcha>
       </div>
             <div class="column is-2 ">
             <b-button type="is-danger"
@@ -70,9 +74,39 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      verified: false,
+      expired: false,
+      token: null,
+      eKey: null,
+      error: null,
     }
-  }
+  },
+    methods: {
+        onVerify(token, ekey) {
+            this.verified = true;
+            this.token = token;
+            this.eKey = ekey;
+            console.log(`Callback token: ${token}, ekey: ${ekey}`);
+        },
+        onExpire() {
+            this.verified = false;
+            this.token = null;
+            this.eKey = null;
+            this.expired = true;
+            console.log('Expired');
+        },
+        onError(err) {
+            this.token = null;
+            this.eKey = null;
+            this.error = err;
+            console.log(`Error: ${err}`);
+        },
+        onSubmit() {
+            console.log('Submitting the invisible hCaptcha', this.$refs.invisibleHcaptcha);
+            this.$refs.invisibleHcaptcha.execute();
+        }
+    }
 }
 </script>
 
