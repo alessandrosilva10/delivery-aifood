@@ -4,7 +4,6 @@
     <div class="columns is-centered is-mobile">
       <div class="column">
       <img class="logo" style="" src="../images/chocolate_logo.png" />
-      {{email}} {{password}}
       </div>
       <div class="column">
         <div class="card">
