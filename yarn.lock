@@ -893,6 +893,11 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-0.1.10.tgz#eeeec1e4e8850bed0468f938292b06cda793bf34"
   integrity sha512-b2+SLF31h32LSepVcXe+BQ63yvbq5qmTCy4KfFogCYm2bn68H5sDWUnX+U7MBqnM2aeEk9M7xSoqGnu+wSdY6w==
 
+"@hcaptcha/vue-hcaptcha@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@hcaptcha/vue-hcaptcha/-/vue-hcaptcha-0.3.0.tgz#faa400d3072e2d87638a88d39ff6341c22e08904"
+  integrity sha512-V9SY1uxOJgpaM3UY/O/8lhv/uVKNasF8ZXfaELnv3U2MY5WlWO6YBl/bdGxgxQnCESmW5r5znLvYF7ZJAwI/xw==
+
 "@mdi/font@^5.9.55":
   version "5.9.55"
   resolved "https://registry.yarnpkg.com/@mdi/font/-/font-5.9.55.tgz#41acd50b88073ded7095fc3029d8712b6e12f38e"

@@ -20,9 +20,17 @@
 
 <script>
 export default {
+    data(){
+        return {
+            url: ''
+        }
+    },
     methods: {
       openFoodCategory(a){
-      this.$router.push(a.url)
+        this.url = a.url;
+        console.log(a)
+        //window.open(url,"_self")
+      this.$router.push(this.url)
     }
     },
     data() {

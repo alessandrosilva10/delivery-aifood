@@ -128,12 +128,12 @@ console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
  .voucher  p{
    color: white;
 }
-/*
+
 .carousel-list.has-shadow {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
-*/
+
 .carousel{
 height: 150%;
 }
