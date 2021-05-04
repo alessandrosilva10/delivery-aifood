@@ -14,8 +14,8 @@
                   <h3 class="subtitle">Faça o login com a sua conta</h3>
                     <b-field>
                         <b-input placeholder="Email"
-                            v-model="email"
-                            type="email"
+                            v-model="username"
+                            type="text"
                             icon-pack="fas"
                             icon="envelope">
                         </b-input>
@@ -31,14 +31,19 @@
                     </b-field>
 
       <div class="columns">
-        <div class="column">               <b-button type="is-success"
-                    style="margin-top: 2vh; float: left;"
-                    icon-pack="fas"
-                      icon-left="sign-in-alt">
-                      Entrar
-                  </b-button></div>
-        <div class="column">            <b-button type="is-danger"
-                    style="margin-top: 2vh; float: right;"
+        <div class="column">
+          <b-button
+            @click="login()"
+            class="button"
+            style="margin-top: 2vh; float: left; color: deepskyblue"
+            icon-pack="fas"
+            icon-left="sign-in-alt">
+              Entrar
+          </b-button>
+        </div>
+        <div class="column">            <b-button
+                    class="button"
+                    style="margin-top: 2vh; float: right; color: deepskyblue"
                     icon-pack="fas"
                     icon-left="user-plus">
                     Cadastrar
@@ -98,14 +103,16 @@
                     </b-field>
 
                     <div class="columns is-centered is-mobile">
-                      <div class="column">               <b-button type="is-success"
-                                  style="margin-top: 2vh; float: left;"
+                      <div class="column">               <b-button
+                                  class="button"
+                                  style="margin-top: 2vh; float: left; color: deepskyblue"
                                   icon-pack="fas"
                                     icon-left="sign-in-alt">
                                     Entrar
                                 </b-button></div>
-                      <div class="column">            <b-button type="is-danger"
-                                  style="margin-top: 2vh; float: right;"
+                      <div class="column">            <b-button
+                                  class="button"
+                                  style="margin-top: 2vh; float: right; color: deepskyblue"
                                   icon-pack="fas"
                                   icon-left="user-plus">
                                   Cadastrar
@@ -117,8 +124,8 @@
                         margin: 0 auto;" sitekey="b928ba3d-0c43-42eb-9a01-27570a8aec49"
                                 language="por"
                                 @verify="onVerify"
-                                  @expired="onExpire"
-                                  @error="onError"
+                                @expired="onExpire"
+                                @error="onError"
                         ></vue-hcaptcha>
                         </div>
                       </div>
@@ -133,13 +140,15 @@
 </template>
 
 <script>
- import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
+import axios from 'axios';
+import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
 
 export default {
   components: { VueHcaptcha },
   data() {
     return {
       email: '',
+      username: '',
       password: '',
       verified: false,
       expired: false,
@@ -160,6 +169,15 @@ export default {
     }
 },
     methods: {
+      login(){
+        const headers = {
+          'Content-Type': 'application/json',
+          //"Authorization": "Bearer my-token",
+        };
+        axios.post("https://aifood-myi454uzzq-rj.a.run.app/login", {username: this.username, password: this.password}, { headers })
+          .then(response => console.log(response.data))
+          .catch(error => console.log(error));
+      },
         getImage(){
           return "../images/hotdog_logo.png";
         },
@@ -226,5 +244,21 @@ margin-top: 15vh;
 
 .b-button {
   margin-top: 2.5vh !important;
+}
+
+.card {
+  border: 1px solid deepskyblue;
+  border-radius: 2.5vh !important;
+}
+
+.button {
+  margin-left: 6vh !important;
+  margin-right: 6vh !important;
+}
+
+.button:hover {
+  color: white !important;
+  background-color: deepskyblue !important;
+  transform: scale(1.1)
 }
 </style>
