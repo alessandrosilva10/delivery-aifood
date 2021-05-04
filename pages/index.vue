@@ -26,6 +26,14 @@
             style="color: #50a773; padding-left: 2vh"
       />
       </center></span>
+
+      <div v-if="$auth.loggedIn">
+        {{$auth.user.email}}
+      </div>
+      <div v-else>
+          Not logged in
+      </div>
+
       <br/> <br/> <br/><br/>
     <div class="container">
       <Carousel />
@@ -72,7 +80,7 @@ export default {
     ...mapState('products', ['products']),
   },
   created() {
-
+    console.log(this.$auth.user)
    /* var text = "#rawString#";
 var key = CryptoJS.enc.Base64.parse("#base64Key#");
 var iv  = CryptoJS.enc.Base64.parse("#base64IV#");

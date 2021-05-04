@@ -52,13 +52,14 @@ export default {
       async: true // Default
     }],*/
     // https://go.nuxtjs.dev/buefy
+    '@nuxtjs/auth',
     ['nuxt-buefy', {
       defaultIconPack: 'fas',
       materialDesignIconsHRef: "https://use.fontawesome.com/releases/v5.4.1/css/all.css"
     }],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-"nuxt-stripejs"
+    "nuxt-stripejs"
     //{ src: '~/plugins/vue-stripe.js', ssr: false },
   ],/*
   buefy: {
@@ -69,9 +70,21 @@ export default {
     publishableKey: 'pk_test_XXXXXXXXXXXXXXX',
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
-
+  axios: {
+    baseURL: 'https://aifood-myi454uzzq-rj.a.run.app'
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/login', method: 'POST', propertyName: 'access_token' },
+          user: { url: '/users', method: 'POST', propertyName: false},
+          tokenRequired: true
+        }
+      }
+    }
   }
 }

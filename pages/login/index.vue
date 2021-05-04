@@ -169,14 +169,27 @@ export default {
     }
 },
     methods: {
-      login(){
-        const headers = {
+      async login(){
+      try {
+        let response = await this.$auth.loginWith('local', {
+          data: {
+            username: this.username, password: this.password
+          }
+        });
+        console.log(response)
+        //this.$auth.strategy.token.sync()
+      } catch (err) {
+        console.log(err)
+      }
+
+
+        /*const headers = {
           'Content-Type': 'application/json',
           //"Authorization": "Bearer my-token",
         };
         axios.post("https://aifood-myi454uzzq-rj.a.run.app/login", {username: this.username, password: this.password}, { headers })
           .then(response => console.log(response.data))
-          .catch(error => console.log(error));
+          .catch(error => console.log(error));*/
       },
         getImage(){
           return "../images/hotdog_logo.png";

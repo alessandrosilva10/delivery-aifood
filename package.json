@@ -11,6 +11,7 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@hcaptcha/vue-hcaptcha": "^0.3.0",
+    "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.5",
     "@vue-stripe/vue-stripe": "^4.1.5",
     "apexcharts": "^3.26.0",
