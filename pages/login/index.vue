@@ -80,14 +80,14 @@
           <h1 class="title">Faça o login no Aifood</h1>
           <div class="columns is-centered is-mobile">
             <div class="column">
-              <div style="margin-top: 7vh;" class="card">
+              <div style="margin-top: 7vh; width: 80%; margin-left: 11%" class="card">
                 <div class="card-content">
                 <section style="padding-top: 1vh;">
                   <h3 class="subtitle">Faça o login com a sua conta</h3>
                     <b-field>
                         <b-input placeholder="Email"
-                            v-model="email"
-                            type="email"
+                             v-model="username"
+                            type="text"
                             icon-pack="fas"
                             icon="envelope">
                         </b-input>
@@ -170,26 +170,23 @@ export default {
 },
     methods: {
       async login(){
-      try {
-        let response = await this.$auth.loginWith('local', {
-          data: {
-            username: this.username, password: this.password
-          }
-        });
-        console.log(response)
-        //this.$auth.strategy.token.sync()
-      } catch (err) {
-        console.log(err)
-      }
-
-
-        /*const headers = {
-          'Content-Type': 'application/json',
-          //"Authorization": "Bearer my-token",
-        };
-        axios.post("https://aifood-myi454uzzq-rj.a.run.app/login", {username: this.username, password: this.password}, { headers })
-          .then(response => console.log(response.data))
-          .catch(error => console.log(error));*/
+        try {
+          let response = await this.$auth.loginWith('local', {
+            data: {
+              username: this.username, password: this.password
+            }
+          });
+          window.open("/","_self")
+                this.$buefy.toast.open({
+        message: 'Login realizado com sucesso!',
+        type: 'is-success',
+        duration: 2500,
+        position: 'is-top-right'
+      });
+          //this.$auth.strategy.token.sync()
+        } catch (err) {
+          console.log(err)
+        }
       },
         getImage(){
           return "../images/hotdog_logo.png";
@@ -237,7 +234,7 @@ html.md-theme-default {
 @media (min-width:960px) { .card {
   margin-top: 15vh;
   width: 75%;
-}
+  }
  }
 
 

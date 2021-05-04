@@ -61,6 +61,7 @@ import { mapState } from 'vuex';
 
 
 export default {
+  middleware: 'auth',
   name: 'HomePage',
   components: {
     Card, Navbar, Carousel, Index, Footer, Spinner
@@ -79,8 +80,12 @@ export default {
         type: 'is-success',
         duration: 2500,
         position: 'is-top-right'
-      })
+      });
+      this.$forceUpdate();
     }
+  },
+  mounted() {
+
   },
   computed: {
    cartLength(){
