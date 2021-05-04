@@ -33,6 +33,7 @@
       <div v-else>
           Not logged in
       </div>
+      <button @click="logout">Log out</button>
 
       <br/> <br/> <br/><br/>
     <div class="container">
@@ -71,7 +72,15 @@ export default {
     }
   },
     methods: {
-
+    logout(){
+      this.$auth.logout()
+      this.$buefy.toast.open({
+        message: 'Logout realizado com sucesso!',
+        type: 'is-success',
+        duration: 2500,
+        position: 'is-top-right'
+      })
+    }
   },
   computed: {
    cartLength(){
