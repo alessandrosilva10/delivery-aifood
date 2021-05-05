@@ -86,14 +86,14 @@ export default {
           user: { url: '/users', method: 'POST', propertyName: false},
           logout: { url: '/logout', method: 'POST'},
           tokenRequired: true
+        },
+        redirect: {
+          login: '/login',
+          logout: '/',
+          callback: '/',
+          home: '/'
         }
       }
-    },
-    redirect: {
-      login: '/login',
-      logout: '/',
-      callback: '/login',
-      home: '/'
     }
   }
 }
