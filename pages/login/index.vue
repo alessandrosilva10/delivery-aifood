@@ -170,7 +170,7 @@ export default {
 },
 beforeCreate(){
   if(this.$auth.loggedIn){
-        this.$router.push("/");
+        window.open("/", "_self")
       }
 },
     methods: {
