@@ -168,6 +168,11 @@ export default {
       }
     }
 },
+beforeCreate(){
+  if(this.$auth.loggedIn){
+        this.$router.push("/");
+      }
+},
     methods: {
       async login(){
         if(this.verified){
