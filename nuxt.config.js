@@ -88,13 +88,13 @@ export default {
           logout: { url: '/logout', method: 'POST'},
           tokenRequired: true
         },
-        redirect: {
-          login: '/login',
-          logout: '/',
-          callback: '/',
-          home: '/'
-        }
       }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/',
+      home: '/'
     }
   }
 }
