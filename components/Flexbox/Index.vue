@@ -109,43 +109,51 @@ export default {
 
     addOrder(){
       if(this.isLojaOpen){
-        let order = {
-            "name": this.product_name,
-            "value": this.value,
-            "observation": this.observation,
-            "quantity": this.quantity_order,
-            "total_value": this.value * this.quantity_order,
-            "product_image": this.product_image
+        if(this.$auth.loggedIn) {
+              let order = {
+                  "name": this.product_name,
+                  "value": this.value,
+                  "observation": this.observation,
+                  "quantity": this.quantity_order,
+                  "total_value": this.value * this.quantity_order,
+                  "product_image": this.product_image
+                }
+
+            let tempOrder = [];
+            tempOrder.push(order)
+
+            const checkUsername = obj => obj.value === this.value;
+
+            let result;
+
+            if(JSON.parse(localStorage.getItem('cartItems'))){
+              result = JSON.parse(localStorage.getItem('cartItems')).some(checkUsername);
+            }
+
+            if(result){
+              this.danger();
+            }else{
+              if(localStorage.getItem('cartItems')){
+                tempOrder = tempOrder.concat(JSON.parse(localStorage.getItem('cartItems')));
+              }
+              // Save back to localStorage
+              localStorage.setItem('cartItems', JSON.stringify(tempOrder));
+              this.$store.dispatch("cart/addItem", tempOrder);
+              this.success();
+            }
+
+            this.isComponentModalActive = false
+            this.quantity_order = 1
+            this.observation = ''
+        }else{
+          this.$buefy.toast.open({
+          duration: 33500,
+          message: `Por favor, faça login para fazer pedidos na loja.`,
+          position: 'is-top',
+          type: 'is-danger'
+        })
       }
-
-      let tempOrder = [];
-      tempOrder.push(order)
-
-      const checkUsername = obj => obj.value === this.value;
-
-      let result;
-
-      if(JSON.parse(localStorage.getItem('cartItems'))){
-        result = JSON.parse(localStorage.getItem('cartItems')).some(checkUsername);
-      }
-
-      if(result){
-        this.danger();
-      }else{
-         if(localStorage.getItem('cartItems')){
-          tempOrder = tempOrder.concat(JSON.parse(localStorage.getItem('cartItems')));
-        }
-         // Save back to localStorage
-         localStorage.setItem('cartItems', JSON.stringify(tempOrder));
-         this.$store.dispatch("cart/addItem", tempOrder);
-         this.success();
-      }
-
-      this.isComponentModalActive = false
-      this.quantity_order = 1
-      this.observation = ''
-
-      }else{
+      }else if(this.isLojaOpen == false){
          this.$buefy.toast.open({
           duration: 2500,
           message: `No momento a loja está fechada e não está aceitando pedidos!`,
@@ -187,6 +195,9 @@ transform: scale(1.1);
   border-radius: 50%;
 }
 
+.toast{
+  width: 3000px !important;
+}
 .carousel-slide{
 
 }

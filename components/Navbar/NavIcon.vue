@@ -11,9 +11,14 @@
                 <b-icon :icon="icon" style="color: red;" size="is-medium"></b-icon>
             </a>
         </template>
-        <b-dropdown-item custom aria-role="menuitem">
-            Logged as <b>Rafael Beraldo</b>
+
+        <b-dropdown-item v-if="this.$auth.loggedIn" custom aria-role="menuitem">
+            Logado como <b>{{this.$auth.user.username}}</b>
         </b-dropdown-item>
+        <b-dropdown-item v-else custom aria-role="menuitem">
+            Logado como <b>visitante</b>
+        </b-dropdown-item>
+
         <hr class="dropdown-divider">
         <b-dropdown-item has-link aria-role="menuitem">
             <a style="text-decoration: none;" href="https://google.com" target="_blank">
@@ -41,9 +46,9 @@
             </a>
         </b-dropdown-item>
 <b-dropdown-item has-link aria-role="menuitem">
-            <a style="text-decoration: none;" href="https://google.com" target="_blank">
-                <b-icon icon="link"></b-icon>
-                Google (link)
+            <a style="text-decoration: none;" @click="logout()">
+                <b-icon icon="sign-out-alt"></b-icon>
+                Sair
             </a>
         </b-dropdown-item>
     </b-dropdown>
@@ -63,6 +68,18 @@ export default {
     checkout: {
       type: Boolean,
       required: true
+    }
+  },
+  methods: {
+    logout(){
+      this.$auth.logout()
+      this.$buefy.toast.open({
+        message: 'Logout realizado com sucesso!',
+        type: 'is-success',
+        duration: 2500,
+        position: 'is-top-right'
+      });
+      //this.$forceUpdate();
     }
   },
     data() {

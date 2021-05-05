@@ -26,15 +26,6 @@
             style="color: #50a773; padding-left: 2vh"
       />
       </center></span>
-
-      <div v-if="$auth.loggedIn">
-        {{$auth.user.email}}
-      </div>
-      <div v-else>
-          Not logged in
-      </div>
-      <button @click="logout">Log out</button>
-
       <br/> <br/> <br/><br/>
     <div class="container">
       <Carousel />
@@ -61,7 +52,7 @@ import { mapState } from 'vuex';
 
 
 export default {
-  middleware: 'auth',
+  //middleware: 'auth',
   name: 'HomePage',
   components: {
     Card, Navbar, Carousel, Index, Footer, Spinner
@@ -72,21 +63,6 @@ export default {
                 isFullPage: true,
     }
   },
-    methods: {
-    logout(){
-      this.$auth.logout()
-      this.$buefy.toast.open({
-        message: 'Logout realizado com sucesso!',
-        type: 'is-success',
-        duration: 2500,
-        position: 'is-top-right'
-      });
-      this.$forceUpdate();
-    }
-  },
-  mounted() {
-
-  },
   computed: {
    cartLength(){
        return this.$store.getters['cart/StoreCartLength']
@@ -94,7 +70,7 @@ export default {
     ...mapState('products', ['products']),
   },
   created() {
-    console.log(this.$auth.user)
+    //console.log(this.$auth.user)
    /* var text = "#rawString#";
 var key = CryptoJS.enc.Base64.parse("#base64Key#");
 var iv  = CryptoJS.enc.Base64.parse("#base64IV#");

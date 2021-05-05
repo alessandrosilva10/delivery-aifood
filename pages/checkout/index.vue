@@ -67,6 +67,7 @@ import Steps from '~/components/Steps/Steps'
 import { mapGetters } from 'vuex';
 
 export default {
+  middleware: 'auth',
   components: {
     Card, Navbar, Carousel, Index, Footer, PaymentImages, Steps
   },

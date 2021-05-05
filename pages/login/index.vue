@@ -176,8 +176,9 @@ export default {
               username: this.username, password: this.password
             }
           });
-          window.open("/","_self")
-                this.$buefy.toast.open({
+          this.$router.go(-1)
+
+        this.$buefy.toast.open({
         message: 'Login realizado com sucesso!',
         type: 'is-success',
         duration: 2500,
