@@ -20,32 +20,33 @@
         </b-dropdown-item>
 
         <hr class="dropdown-divider">
-        <b-dropdown-item v-if="!this.$auth.loggedIn" has-link aria-role="menuitem">
+        <b-dropdown-item has-link aria-role="menuitem">
+            <a style="text-decoration: none;" href="/perfil" target="">
+            <b-icon icon="user"></b-icon>
+                Meu perfil
+            </a>
+        </b-dropdown-item>
+
+                <b-dropdown-item has-link aria-role="menuitem">
+            <a style="text-decoration: none;" href="https://google.com" target="_blank">
+                <b-icon icon="money-check"></b-icon>
+                Meus pedidos
+            </a>
+        </b-dropdown-item>
+        <b-dropdown-item has-link aria-role="menuitem">
+            <a style="text-decoration: none;" href="https://google.com" target="_blank">
+                <b-icon icon="hands-helping"></b-icon>
+                Suporte
+            </a>
+        </b-dropdown-item>
+        <hr class="dropdown-divider" aria-role="menuitem">
+        <b-dropdown-item v-if="this.$auth.loggedIn === false" has-link aria-role="menuitem">
             <a style="text-decoration: none;" href="/login" target="">
                 <b-icon icon="lock-open"></b-icon>
                 Entrar
             </a>
         </b-dropdown-item>
-                <b-dropdown-item has-link aria-role="menuitem">
-            <a style="text-decoration: none;" href="https://google.com" target="_blank">
-                <b-icon icon="link"></b-icon>
-                Google (link)
-            </a>
-        </b-dropdown-item>
-        <b-dropdown-item has-link aria-role="menuitem">
-            <a style="text-decoration: none;" href="https://google.com" target="_blank">
-                <b-icon icon="link"></b-icon>
-                Google (link)
-            </a>
-        </b-dropdown-item>
-        <hr class="dropdown-divider" aria-role="menuitem">
-<b-dropdown-item has-link aria-role="menuitem">
-            <a style="text-decoration: none;" href="https://google.com" target="_blank">
-                <b-icon icon="link"></b-icon>
-                Google (link)
-            </a>
-        </b-dropdown-item>
-<b-dropdown-item has-link aria-role="menuitem">
+<b-dropdown-item v-else has-link aria-role="menuitem">
             <a style="text-decoration: none;" @click="logout()">
                 <b-icon icon="sign-out-alt"></b-icon>
                 Sair

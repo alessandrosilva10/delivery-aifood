@@ -5,7 +5,16 @@
         <template #brand>
           <BrandIcon :url="'/'" :brand_logo="brand_logo" />
          <div class="navbar-search">
-          <NavSearch />
+             <b-field message="">
+      <b-input class="navbar-search-input" v-model="inputData" @keyup="$emit('update:inputData', inputData);" placeholder="Busque por um item..."
+        type="search"
+        icon="search-dollar"
+        >
+    </b-input>
+    <p class="control">
+        <b-button style="background-color: red; color: white;" type="" label="Search" />
+    </p>
+  </b-field>
         </div>
         </template>
         <template #start>
@@ -49,7 +58,7 @@ export default {
   components: {
     NavIcon, BrandIcon, NavSearch
   },
-  props: ['cartLength', 'fixedTop'],
+  props: ['cartLength', 'fixedTop', 'inputData'],
   data() {
     return {
       brand_logo: "https://www.freepnglogos.com/uploads/logo-ifood-png/ifood-pizzaria-santa-clara-logo-phone-mobile-ifood-png-6.png",
@@ -69,6 +78,10 @@ export default {
     height: 10vh !important;
     padding-left: 30vh !important;
     padding-right: 30vh !important;
+  }
+
+  .navbar-search-input{
+    width: 400px !important;
   }
 
   .mobile-menu{

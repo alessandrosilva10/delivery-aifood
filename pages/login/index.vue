@@ -150,7 +150,7 @@ export default {
       email: '',
       username: '',
       password: '',
-      verified: false,
+      verified: true,
       expired: false,
       token: null,
       eKey: null,

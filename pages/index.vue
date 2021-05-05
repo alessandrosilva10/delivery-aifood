@@ -2,22 +2,24 @@
   <section class="main">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
-    <Navbar :fixedTop="true" :cartLength="this.$store.getters['cart/StoreCartLength']"/>
+    <Navbar :fixedTop="true"  :inputData.sync="parentData" :cartLength="this.$store.getters['cart/StoreCartLength']"/>
       <div class="voucher">
       <b-icon
             icon="dollar-sign"
             size="is-small"
             style="color: white;"
       /> <p>Você tem 8 cupons! Aproveite seus descontos</p>
-
     </div>
+    {{parentData}}
 
      <div class="triangle-topright"></div>
    <div class="triangle-topleft"></div>
+
    <span class="blinking"><center>
       <b-icon
             icon="store"
             size="is-small"
+            class="loja-open"
             style="color: #50a773; padding-right: 2vh"
       /> A loja está aberta
       <b-icon
@@ -26,7 +28,6 @@
             style="color: #50a773; padding-left: 2vh"
       />
       </center></span>
-      <br/> <br/> <br/><br/>
     <div class="container">
       <Carousel />
     </div>
@@ -59,8 +60,9 @@ export default {
   },
   data(){
     return {
-         isLoading: true,
-                isFullPage: true,
+      isLoading: true,
+      isFullPage: true,
+      parentData: ''
     }
   },
   computed: {
@@ -91,6 +93,7 @@ console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
 }
 </script>
 <style>
+
  .main {
     background-color: white !important;
     font-family: 'Quicksand', sans-serif;
@@ -145,12 +148,29 @@ height: 150%;
 
 @media (max-width: 1000px) {
   .carousel-slide img{
-       width: 120% !important;
-      max-width: 40px !important;
-      height: 50px !important;
-      margin-top: 40px !important;
+        width: 120% !important;
+        max-width: 40px !important;
+        height: 50px !important;
+        margin-top: 40px !important;
+    }
+
+  .triangle-topleft {
+      display: none !important;
+  }
+
+  .triangle-topright {
+        display: none !important;
+      }
+
+  .loja-open{
+    margin-top: 5vh !important;
+    margin-bottom: 5vh !important;
   }
 }
+
+  .loja-open{
+    margin-bottom: 6vh !important;
+  }
 
 .carousel-slide img:hover{
   transform: scale(1.1);
