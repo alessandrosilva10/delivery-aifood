@@ -20,10 +20,10 @@
         </b-dropdown-item>
 
         <hr class="dropdown-divider">
-        <b-dropdown-item has-link aria-role="menuitem">
-            <a style="text-decoration: none;" href="https://google.com" target="_blank">
-                <b-icon icon="link"></b-icon>
-                Google (link)
+        <b-dropdown-item v-if="!this.$auth.loggedIn" has-link aria-role="menuitem">
+            <a style="text-decoration: none;" href="/login" target="">
+                <b-icon icon="lock-open"></b-icon>
+                Entrar
             </a>
         </b-dropdown-item>
                 <b-dropdown-item has-link aria-role="menuitem">
