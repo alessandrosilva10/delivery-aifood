@@ -80,7 +80,7 @@ export default {
         duration: 2500,
         position: 'is-top-right'
       });
-      window.open('/', '_self');
+      //window.open('/', '_self');
     }
   },
     data() {

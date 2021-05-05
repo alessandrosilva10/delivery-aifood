@@ -85,6 +85,7 @@ export default {
           login: { url: '/login', method: 'POST', propertyName: 'access_token' },
           user: { url: '/users', method: 'POST', propertyName: false},
           logout: { url: '/logout', method: 'POST'},
+          home: '/',
           tokenRequired: true
         }
       }
