@@ -177,7 +177,7 @@ export default {
                   username: this.username, password: this.password
                 }
               });
-              this.$router.go(-1)
+              //this.$router.go(-1)
 
             this.$buefy.toast.open({
             message: 'Login realizado com sucesso!',
