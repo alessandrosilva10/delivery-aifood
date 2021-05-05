@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@mdi/font": "^5.9.55",
+    "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/vuetify": "^1.11.3",
     "node-sass": "^5.0.0",
     "pug": "^3.0.2",
