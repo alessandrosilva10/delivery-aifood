@@ -6,7 +6,6 @@
           <div class="columns is-centered is-mobile">
             <div class="column">
             <img class="logo" style="" :src="getImage()" />
-                                    {{verified}}
             </div>
             <div class="column">
               <div class="card">
@@ -171,25 +170,33 @@ export default {
 },
     methods: {
       async login(){
-        try {
-          let response = await this.$auth.loginWith('local', {
-            data: {
-              username: this.username, password: this.password
-            }
-          });
-          this.$router.go(-1)
+        if(this.verified){
+            try {
+              let response = await this.$auth.loginWith('local', {
+                data: {
+                  username: this.username, password: this.password
+                }
+              });
+              this.$router.go(-1)
 
-        this.$buefy.toast.open({
-        message: 'Login realizado com sucesso!',
-        type: 'is-success',
-        duration: 2500,
-        position: 'is-top-right'
-      });
-          //this.$auth.strategy.token.sync()
-        } catch (err) {
+            this.$buefy.toast.open({
+            message: 'Login realizado com sucesso!',
+            type: 'is-success',
+            duration: 2500,
+            position: 'is-top-right'
+          }); //this.$auth.strategy.token.sync()
+        }catch (err) {
           console.log(err)
         }
-      },
+      }else{
+        this.$buefy.toast.open({
+            message: 'Você precisa ativar o Hcaptcha!',
+            type: 'is-warning',
+            duration: 2500,
+            position: 'is-top-right'
+          });
+      }
+    },
         getImage(){
           return "../images/hotdog_logo.png";
         },
