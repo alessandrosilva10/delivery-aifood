@@ -169,7 +169,7 @@ export default {
     }
 },
 beforeCreate(){
-  if(process.browser && this.$auth.loggedIn){
+  if(this.$auth.loggedIn){
         window.open("/", "_self")
       }
 },
