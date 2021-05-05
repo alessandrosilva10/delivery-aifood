@@ -1,8 +1,11 @@
 <template>
+<html>
+ <head>
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+  <meta name="google-site-verification" content="r8txx7XTw0F7y8RSKt58RbavSWB0oXLUQmuUDi2Bsng" />
+ </head>
   <section class="main">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
-<meta name="google-site-verification" content="r8txx7XTw0F7y8RSKt58RbavSWB0oXLUQmuUDi2Bsng" />
     <Navbar :fixedTop="true"  :inputData.sync="parentData" :cartLength="this.$store.getters['cart/StoreCartLength']"/>
       <div class="voucher">
       <b-icon
@@ -39,6 +42,7 @@
      </div>
 
   </section>
+ </html>
 </template>
 
 <script>
