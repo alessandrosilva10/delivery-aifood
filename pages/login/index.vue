@@ -78,9 +78,8 @@
   <div v-else-if="isMobile">
         <div class="">
           <h1 class="title">Faça o login no Aifood</h1>
-          <div class="columns is-centered is-mobile">
-            <div class="column">
-              <div style="margin-top: 7vh; width: 80%; margin-left: 11%" class="card">
+          <div class="">
+              <div style="margin-top: 7vh; width: 100%;" class="card">
                 <div class="card-content">
                 <section style="padding-top: 1vh;">
                   <h3 class="subtitle">Faça o login com a sua conta</h3>
@@ -104,6 +103,7 @@
 
                     <div class="columns is-centered is-mobile">
                       <div class="column">               <b-button
+                                  @click="login"
                                   class="button"
                                   style="margin-top: 2vh; float: left; color: deepskyblue"
                                   icon-pack="fas"
@@ -133,7 +133,7 @@
               </div>
             </div>
           </div>
-        </div>
+
       </div>
      </div>
      </client-only>
@@ -169,7 +169,7 @@ export default {
     }
 },
 beforeCreate(){
-  if(this.$auth.loggedIn){
+  if(process.browser && this.$auth.loggedIn){
         window.open("/", "_self")
       }
 },
@@ -196,9 +196,9 @@ beforeCreate(){
       }else{
         this.$buefy.toast.open({
             message: 'Você precisa ativar o Hcaptcha!',
-            type: 'is-warning',
+            type: 'is-danger',
             duration: 2500,
-            position: 'is-top-right'
+            position: 'is-top'
           });
       }
     },
@@ -235,6 +235,9 @@ beforeCreate(){
 <style >
 body{
   background: linear-gradient(to right, rgba(34, 167, 240, 1), rgba(137, 196, 244, 1)) !important;
+    position: relative;
+  height: auto;
+  min-height: 100% !important;
 }
 
 html.md-theme-default {
@@ -245,7 +248,15 @@ html.md-theme-default {
   padding-top: 15vh; text-align:center; color: white; font-family: Roboto,sans-serif; font-size: 5vh;
 }
 
-@media (min-width:960px) { .card {
+@media (min-width:960px) {
+  body{
+  background: linear-gradient(to right, rgba(34, 167, 240, 1), rgba(137, 196, 244, 1)) !important;
+    position: relative;
+  height: auto;
+  min-height: 100% !important;
+}
+
+  .card {
   margin-top: 15vh;
   width: 75%;
   }

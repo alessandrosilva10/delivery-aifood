@@ -33,10 +33,23 @@
                 Meus pedidos
             </a>
         </b-dropdown-item>
+<b-dropdown-item has-link aria-role="menuitem">
+            <a style="text-decoration: none;" href="https://google.com" target="_blank">
+                <b-icon icon="money-check-alt"></b-icon>
+                Cupom
+            </a>
+        </b-dropdown-item>
+
+        <b-dropdown-item has-link aria-role="menuitem">
+            <a style="text-decoration: none;" href="https://google.com" target="_blank">
+                <b-icon icon="shield-alt"></b-icon>
+                Segurança
+            </a>
+        </b-dropdown-item>
         <b-dropdown-item has-link aria-role="menuitem">
             <a style="text-decoration: none;" href="https://google.com" target="_blank">
                 <b-icon icon="hands-helping"></b-icon>
-                Suporte
+                Ajuda
             </a>
         </b-dropdown-item>
         <hr class="dropdown-divider" aria-role="menuitem">

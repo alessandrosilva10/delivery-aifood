@@ -1,12 +1,8 @@
 <template>
-<html>
- <head>
-   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
-  <meta name="google-site-verification" content="r8txx7XTw0F7y8RSKt58RbavSWB0oXLUQmuUDi2Bsng" />
- </head>
   <section class="main">
-    <Navbar :fixedTop="true"  :inputData.sync="parentData" :cartLength="this.$store.getters['cart/StoreCartLength']"/>
+       <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    <Navbar :fixedTop="true" :cartLength="this.$store.getters['cart/StoreCartLength']"/>
       <div class="voucher">
       <b-icon
             icon="dollar-sign"
@@ -14,7 +10,7 @@
             style="color: white;"
       /> <p>Você tem 8 cupons! Aproveite seus descontos</p>
     </div>
-    {{parentData}}
+
 
      <div class="triangle-topright"></div>
    <div class="triangle-topleft"></div>
@@ -42,7 +38,6 @@
      </div>
 
   </section>
- </html>
 </template>
 
 <script>
@@ -67,7 +62,6 @@ export default {
     return {
       isLoading: true,
       isFullPage: true,
-      parentData: ''
     }
   },
   computed: {
@@ -98,7 +92,11 @@ console.log("Decrypted String:: "+decrypted.toString(CryptoJS.enc.Utf8));*/
 }
 </script>
 <style>
-
+body {
+  position: relative;
+  height: auto;
+  min-height: 100% !important;
+}
  .main {
     background-color: white !important;
     font-family: 'Quicksand', sans-serif;

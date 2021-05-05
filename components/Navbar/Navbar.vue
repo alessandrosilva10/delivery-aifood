@@ -112,7 +112,7 @@ export default {
     padding-top: 5px !important;
   }
   .navbar {
-    height: 10vh !important;
+    height: 12.5vh !important;
     padding-left: 0vh !important;
     padding-right: 0vh !important;
   }
