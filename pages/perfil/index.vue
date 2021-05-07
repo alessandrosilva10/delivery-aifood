@@ -44,7 +44,7 @@
 import Navbar from '~/components/Navbar/Navbar'
 import { mapState } from 'vuex';
 import Cleave from 'cleave.js';
-import "cleave.js/dist/addons/cleave-phone.BR";
+//import "cleave.js/dist/addons/cleave-phone.BR";
 
 export default {
   middleware: 'auth',
