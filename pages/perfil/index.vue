@@ -30,7 +30,7 @@
             <b-input disabled v-else value="Desativada"></b-input>
         </b-field>
         <br>
-        <b-button type="is-danger" outlined>Confirmar dados</b-button>
+        <b-button type="is-danger" outlined>Confirmar dadoss</b-button>
     </section>
   </div>
   <div class="column"></div>
