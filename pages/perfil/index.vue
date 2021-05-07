@@ -2,22 +2,35 @@
   <div>
     <Navbar :fixedTop="false"/>
   <div class="container">
-    <div class="columns">
-  <div v-for="(opt, id) in address" :key="id" class="column is-one-fifth is-mobile">
-        <div class="card">
-  <div class="card-content">
-    <div class="content">
-      {{opt.user_id}}<br/>
-      {{opt.user_first_name}}<br/>
-      {{opt.user_last_name}}<br/>
-      {{opt.user_phone_number}}<br/>
-      {{opt.user_landline}}<br/>
-      {{opt.user_image_path}}<br/>
-      {{opt.account_status}}<br/>
-    </div>
+    <br> <br> <br>
+  <div class="columns">
+  <div class="column"></div>
+  <div class="column  is-one-quarter is-mobile">
+     <section>
+        <b-field label="Nome">
+            <b-input :value="address.user_first_name"></b-input>
+        </b-field>
+
+        <b-field label="Sobrenome">
+            <b-input :value="address.user_last_name"></b-input>
+        </b-field>
+
+        <b-field label="Telefone residencial">
+            <b-input :value="address.user_landline"></b-input>
+        </b-field>
+
+        <b-field label="Telefone celular">
+            <b-input type="text"  id="phone" data-politespace data-grouplength="3,3,4" :value="address.user_phone_number"></b-input>
+        </b-field>
+
+        <b-field label="Status da conta">
+            <b-input :value="address.account_status"></b-input>
+        </b-field>
+        <br>
+        <b-button type="is-danger" outlined>Confirmar dados</b-button>
+    </section>
   </div>
-</div>
-  </div>
+  <div class="column"></div>
 </div>
 
 </div>
@@ -38,40 +51,11 @@ export default {
   },
   async created(){
    await this.$store.dispatch('profile/loadProfile')
-   this.address = this.$store.getters['profile/address']
+   this.address = this.$store.getters['profile/address'][0]
   },
   data() {
     return{
-      address: null,
-      options: [
-        {
-          title: 'Meus Pedidos'
-        },
-                {
-          title: 'Meu Endereço'
-        },
-                {
-          title: 'Meus Pedidos'
-        },
-                {
-          title: 'Meus Pedidos'
-        }
-            ,    {
-          title: 'Meus Pedidos'
-        },
-                {
-          title: 'Meus Pedidos'
-        }
-           ,     {
-          title: 'Meus Pedidos'
-        },
-                {
-          title: 'Meus Pedidos'
-        },
-                {
-          title: 'Meus Pedidos'
-        }
-      ],
+      address: {},
     }
   }
 }

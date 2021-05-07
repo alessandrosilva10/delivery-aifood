@@ -28,7 +28,7 @@ const profile = {
         .then(res => {
         commit('SET_PROFILE', res.data)
         }).catch(err => {
-          console.log(err.response);
+
         });
       },
     }
