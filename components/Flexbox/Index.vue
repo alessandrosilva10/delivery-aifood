@@ -139,9 +139,10 @@ export default {
               // Save back to localStorage
               localStorage.setItem('cartItems', JSON.stringify(tempOrder));
               this.$store.dispatch("cart/addItem", tempOrder);
+              this.$store.dispatch("cart/addCartDatabase", tempOrder);
+
               this.success();
             }
-
             this.isComponentModalActive = false
             this.quantity_order = 1
             this.observation = ''

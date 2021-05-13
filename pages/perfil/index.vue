@@ -44,7 +44,7 @@
 import Navbar from '~/components/Navbar/Navbar'
 import { mapState } from 'vuex';
 import Cleave from 'cleave.js';
-//import "cleave.js/dist/addons/cleave-phone.BR";
+import "cleave.js/dist/addons/cleave-phone.BR";
 
 export default {
   middleware: 'auth',
@@ -78,6 +78,7 @@ export default {
   async created(){
    await this.$store.dispatch('profile/loadProfile')
    this.address = this.$store.getters['profile/address'][0]
+   console.log( this.$store.getters['profile/address'] )
   },
   data() {
     return{

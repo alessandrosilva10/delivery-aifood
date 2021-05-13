@@ -40,6 +40,7 @@
             icon-left="sign-in-alt">
               Entrar
           </b-button>
+           <button @click="google()">Google login</button>
         </div>
         <div class="column">            <b-button
                     class="button"
@@ -110,6 +111,8 @@
                                     icon-left="sign-in-alt">
                                     Entrar
                                 </b-button></div>
+
+
                       <div class="column">            <b-button
                                   class="button"
                                   style="margin-top: 2vh; float: right; color: deepskyblue"
@@ -117,7 +120,7 @@
                                   icon-left="user-plus">
                                   Cadastrar
                                 </b-button></div>
-                    </div>
+                    </div><hr width="1" size="500">
                       <div class="columns is-mobile">
                         <div class="column">
                           <vue-hcaptcha  style="  display: table;
@@ -169,11 +172,28 @@ export default {
     }
 },
 beforeCreate(){
-  if(this.$auth.loggedIn){
+  /*if(this.$auth.loggedIn){
         window.open("/", "_self")
-      }
+      }*/
 },
     methods: {
+
+      async google(){
+         try {
+              let response = await this.$auth.loginWith('google', { params: { "fresh": true, "type": "access_token"} })
+
+            this.$buefy.toast.open({
+            message: 'Login realizado com sucesso!',
+            type: 'is-success',
+            duration: 2500,
+            position: 'is-top-right'
+          }); //this.$auth.strategy.token.sync()
+        }catch (err) {
+          console.log(err)
+        }
+
+
+      },
       async login(){
         if(this.verified){
             try {

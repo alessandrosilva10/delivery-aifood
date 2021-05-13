@@ -81,6 +81,8 @@ export default {
   },
   auth: {
     strategies: {
+      tokenType: 'bearer',
+      //https://stackoverflow.com/questions/58514171/flask-jwt-extended-the-specified-alg-value-is-not-allowed-error
       local: {
         endpoints: {
           login: { url: '/login', method: 'POST', propertyName: 'access_token' },
@@ -88,7 +90,47 @@ export default {
           logout: { url: '/logout', method: 'POST'},
           tokenRequired: true
         },
-      }
+      },
+      facebook: {
+        client_id: '',
+        userinfo_endpoint: false,
+        scope: ['public_profile', 'email'],
+        redirect_uri:'http://localhost:3000'
+      },
+      google: {
+        client_id: '545822476688-7h0hrrj950nprgtmtslv5r65bjf7qe3m.apps.googleusercontent.com',
+        responseType: "code",
+        scope: ['profile', 'email'],
+        refresh_token: {
+          prefix: '_refresh_token.'
+        },
+        access_token: {
+          prefix: '_access_token.'
+        },
+        fresh: true, type: "access",
+        endpoints: {
+          token: 'http://localhost:3000/',
+          userInfo: 'http://localhost:3000/',
+        },
+        codeChallengeMethod: "HS256",
+        refreshToken: {
+          property: "refresh_token",
+          maxAge: 60 * 60 * 24 * 30
+        }
+     /* google: {
+        clientId: '545822476688-7h0hrrj950nprgtmtslv5r65bjf7qe3m.apps.googleusercontent.com',
+        codeChallengeMethod: "",
+        scope: ['profile', 'email'],
+        user:true,
+        responseType: "code",
+        redirect_uri:'http://localhost:3000/',
+        //responseType: 'code',
+        //https://medium.com/swlh/how-to-build-google-social-login-in-django-rest-framework-and-nuxt-auth-and-refresh-its-jwt-token-752601d7a6f3
+        // endpoints: {
+        // token: 'http://localhost:8000/social-login/google/',
+        // userInfo: 'http://localhost:8000/auth/user/'
+       // },
+      },*/
     },
     redirect: {
       login: '/login',
@@ -97,4 +139,4 @@ export default {
       home: '/'
     }
   }
-}
+  }}

@@ -39,7 +39,7 @@ const cart = {
       },
     mutations: {
       ADD_Item(state, order) {
-          state.StoreCart.push(order);
+          state.StoreCart.push(order[0]);
         },
 
         REMOVE_Item(state, index) {
@@ -47,6 +47,24 @@ const cart = {
       },
     },
     actions: {
+      async addCartDatabase({commit, state}){
+        /*let token = null;
+        if(process.browser){
+          token = JSON.stringify(localStorage.getItem('auth._token.local')) || undefined;
+        }*/
+          axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+          if(process.browser){
+            axios.defaults.headers.common['Authorization'] = JSON.stringify(localStorage.getItem('auth._token.google'));
+          }
+          await axios.post('https://aifood-myi454uzzq-rj.a.run.app/useraddress')
+          .then(res => {
+          //commit('SET_PROFILE', res.data)
+          }).catch(err => {
+
+          });
+
+        //state.StoreCart
+      },
       addItem(context, order) {
         context.commit("ADD_Item", order);
       },
